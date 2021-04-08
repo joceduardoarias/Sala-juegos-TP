@@ -1,0 +1,29 @@
+<div id="registro">
+    <div class="container">
+        <div id="registro-row" class="row justify-content-center align-items-center">
+            <div id="registro-column" class="col-md-4">
+                <div id="registro-box" class="col-md-12">
+                    <form id="registro-form" class="form" action="" method="post">
+                        <h3 class="text-center text-info">Registrarse</h3>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Username:</label><br>
+                            <input type="text" name="username" id="username" class="form-control" [formControl]="nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Email:</label><br>
+                            <input type="email" name="email" id="email" class="form-control" [formControl]="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Password:</label><br>
+                            <input type="password" name="password" id="password" class="form-control" [formControl]="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="button" name="submit" class="btn btn-info btn-md btn-block" value="Registarse" (click)="registrar()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

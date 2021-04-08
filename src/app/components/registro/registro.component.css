@@ -1,0 +1,14 @@
+
+  #registro .container #registro-row #registro-column #registro-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 320px;
+    /* border: 1px solid #9C9C9C;
+    background-color: #EAEAEA; */
+  }
+  #registro .container #registro-row #registro-column #registro-box #registro-form {
+    padding: 20px;
+  }
+  #registro .container #registro-row #registro-column #registro-box #registro-form #register-link {
+    margin-top: -85px;
+  }
