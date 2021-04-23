@@ -6,9 +6,11 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class AuthService {
+  
 
   constructor(private afAuth: AngularFireAuth,
-              private router: Router) { }
+              private router: Router) {
+               }
 
  /**
   * Este método es el encargado de autenticar los usuarios de la app
@@ -29,4 +31,21 @@ export class AuthService {
  public async registrar(email:string, password:string) {
    return this.afAuth.createUserWithEmailAndPassword(email,password);
  }
+
+ public isAuth(){
+   
+  return new Promise((resolve, reject) => {
+    this.afAuth.onAuthStateChanged(user => {
+      if (user) {
+        resolve(user);
+        //  console.log(user.email + " is logged in!");
+      } else {
+        reject(user);
+        //  console.log('User is logged out!');
+      }
+    });
+   });
+   
+ }
+ 
 }

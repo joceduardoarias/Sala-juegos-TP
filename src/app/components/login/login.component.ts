@@ -3,7 +3,7 @@ import { AuthService } from "../../services/auth.service";
 import { FormControl } from "@angular/forms";
 import Swal from 'sweetalert2';
 import { Router } from "@angular/router";
-import { EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-login',
@@ -11,8 +11,6 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Output()
-  logueado: EventEmitter<any> = new EventEmitter<any>();
 
   password = new FormControl('');
   email = new FormControl('');
@@ -35,7 +33,6 @@ export class LoginComponent implements OnInit {
         timer: 1500
       });
       this.router.navigate(['/home']);
-      this.logueado.emit(true);
     }, error => {
       console.log(error.message);
       Swal.fire({

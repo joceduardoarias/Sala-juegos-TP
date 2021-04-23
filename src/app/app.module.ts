@@ -11,16 +11,28 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from 'src/environments/environment';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ChatfirestoreComponent } from './components/chatfirestore/chatfirestore.component';
+import { ListadoRealtimeComponent } from './components/listado-realtime/listado-realtime.component';
+import { TatetiComponent } from './juegos/tateti/tateti.component';
+import { PiedraPapleOTijeraComponent } from './juegos/piedra-paple-o-tijera/piedra-paple-o-tijera.component';
+import { SalaDeJuegosComponent } from './components/sala-de-juegos/sala-de-juegos.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     QuiensoyComponent,
-    RegistroComponent
+    RegistroComponent,
+    NavBarComponent,
+    ChatfirestoreComponent,
+    ListadoRealtimeComponent,
+    TatetiComponent,
+    PiedraPapleOTijeraComponent,
+    SalaDeJuegosComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +41,9 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

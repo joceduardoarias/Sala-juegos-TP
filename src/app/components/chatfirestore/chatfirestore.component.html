@@ -1,0 +1,13 @@
+<!-- <p>chatfirestore works!</p>
+<p>Solo enviar mensaje</p>
+<input type="text" [(ngModel)]="nuevoMensaje.mensaje">
+<button (click)="EnviarMensaje()">Enviar</button> -->
+<!-- <app-form-subir-archivos></app-form-subir-archivos> -->
+<div class="panel-footer">
+    <div class="input-group">
+        <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." [(ngModel)]="nuevoMensaje.mensaje" [formControl]="inputMensaje"/>
+        <span class="input-group-btn">
+        <button class="btn btn-primary btn-sm" id="btn-chat" (click)="EnviarMensaje()">Send</button>
+        </span>
+    </div>
+</div>

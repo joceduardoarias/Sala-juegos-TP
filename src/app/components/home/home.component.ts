@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModule, NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-home',
@@ -7,15 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  estaLogueado:boolean = false;
-  constructor() { }
+  imagenes : any[]= [
+    {name: 'slider1',
+     img:'./assets/slider1.png'},
+    {name: 'slider2',
+    img:'./assets/slider2.png'},
+    {name: 'slider4',
+    img:'./assets/slider4.jpg'}
+  ]
+  constructor(private carouselConfig : NgbCarouselConfig) { 
+    carouselConfig.interval = 4000;
+  }
 
   ngOnInit(): void {
-    this.estaLogueado = false;
+    
   }
 
-  procesarUsuarioLogueado(respuesta:boolean){
-    console.log(respuesta);
-    this.estaLogueado = respuesta;
-  }
+ 
 }
