@@ -6,6 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 import { QuiensoyComponent } from './components/quiensoy/quiensoy.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { SalaDeJuegosComponent } from './components/sala-de-juegos/sala-de-juegos.component';
+import { AnagramaComponent } from './juegos/anagrama/anagrama.component';
+import { PiedraPapleOTijeraComponent } from './juegos/piedra-paple-o-tijera/piedra-paple-o-tijera.component';
 import { TatetiComponent } from './juegos/tateti/tateti.component';
 
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: 'quiensoy', component: QuiensoyComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'tateti', component: TatetiComponent},
+  {path: 'piedraPapelTijera', component: PiedraPapleOTijeraComponent},
+  {path:'anagrama',component:AnagramaComponent},
   {path: 'juegos', component: SalaDeJuegosComponent},
   {path: '**', component: ErrorComponent}
   

@@ -20,6 +20,7 @@ import { TatetiComponent } from './juegos/tateti/tateti.component';
 import { PiedraPapleOTijeraComponent } from './juegos/piedra-paple-o-tijera/piedra-paple-o-tijera.component';
 import { SalaDeJuegosComponent } from './components/sala-de-juegos/sala-de-juegos.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AnagramaComponent } from './juegos/anagrama/anagrama.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ListadoRealtimeComponent,
     TatetiComponent,
     PiedraPapleOTijeraComponent,
-    SalaDeJuegosComponent
+    SalaDeJuegosComponent,
+    AnagramaComponent
   ],
   imports: [
     BrowserModule,

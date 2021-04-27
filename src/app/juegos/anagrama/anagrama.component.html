@@ -1,0 +1,19 @@
+<div class="jumbotron" style="background-image: url('/assets/imagenes/anagrama.png');margin-top: 10%;">
+    <div class="container" style="margin-top: 0%" style="background-color: white">
+      <div *ngIf="enJuego">
+        Palabra:
+        <h3>{{this.palabraDesordenada}}</h3>
+        Respuesta: <input [(ngModel)]="this.palabraUser" placeholder="ingrese palabra" name="palabraIngresada" type="text" class="form-control" style="width:100%"/>
+        <br>
+      </div>
+  <div class="row">
+    <div style="margin-left: 800px;margin-top: 20px;"> 
+        <!--<button class="btnpalanca" (click)="Jugar()" ><img src="./assets/imagenes/palancabtn.png" ></button>--> 
+        <!--<button [hidden]="enJuego" (click)="empezar()" class="btn button btn-success">Nuevo juego</button> --> 
+        <h2 [hidden]="!ocultarVerificar"><button (click)="Verificar()" class="btn button btn-success">Verificar</button></h2>
+        <h2 [hidden]="ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn button btn-success">Nuevo Juego</button></h2>
+        <div><p id="mensajeID" style="background-color: white"></p></div>
+    </div>
+  </div>
+  
+  </div>

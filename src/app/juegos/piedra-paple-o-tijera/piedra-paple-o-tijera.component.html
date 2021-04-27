@@ -1,1 +1,10 @@
-<p>piedra-paple-o-tijera works!</p>
+<app-nav-bar></app-nav-bar>    
+<br>
+<div id="juego" [ngStyle]="{'background': 'url(' + backgroundUrl + ') no-repeat 0 0 / cover'}">
+    <h1>Juega Contra la Maquina</h1>
+    <div (click)="opcionSeleccionada('0')" id="piedra"></div>
+    <div (click)="opcionSeleccionada('1')" id="papel"></div>
+    <div (click)="opcionSeleccionada('2')" id="tijera"></div>
+</div>
+
+<div id="efecto" style="display:none" (click)="quitarEfectoPantalla()"> </div>
