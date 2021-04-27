@@ -1,7 +1,9 @@
+<app-nav-bar></app-nav-bar>    
+<br>
 <header><h1>Ta Te Ti</h1></header>
 
 <section id="ficha">
-    <h3>Elige ficha:</h3><a onclick="eligeFicha('X')">X</a><a onclick="eligeFicha('O')">O</a>
+    <h3>Elige ficha:</h3><a (click)="eligeFicha('x')">X</a><a (click)="eligeFicha('o')">O</a>
 </section>
 
 <section id="jugadores">

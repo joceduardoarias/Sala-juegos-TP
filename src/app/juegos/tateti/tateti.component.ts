@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tateti',
@@ -8,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class TatetiComponent implements OnInit {
   
   comenzar:boolean = false;
-  casilleros: any;
+  casilleros = new Array(9);
+  ficha :string = "";
 
   constructor() {
-    this.casilleros = new Array(9);
    }
 
   ngOnInit(): void {
@@ -20,26 +21,31 @@ export class TatetiComponent implements OnInit {
   jugar(numeroCasillero:number){
     
     if(!this.casilleros[numeroCasillero]){
-      this.casilleros[numeroCasillero] = "x";
+      this.casilleros[numeroCasillero] = this.ficha;
       var celdas = document.getElementsByClassName("celda");
       for (let index = 0; index < celdas.length; index++) {
         if(index == numeroCasillero){
-          celdas[index].setAttribute("value",'X');
+          celdas[index].setAttribute("value",this.ficha.toUpperCase());
           break;
         }
         
       }
       
-      if(this.gano("x")){
+      if(this.gano(this.ficha)){
         console.log("GANASTE");
+        Swal.fire({
+          icon: 'success',
+          title: 'Ganaste...',
+          text: 'Vamos por mas!',
+        });
         this.reiniciar();
-      }
-      else if(this.gano("o")){
-        console.log("PERDISTE PETE");
-        this.reiniciar();
-      }
-      else if(this.empate()){
+      }else if(this.empate()){
         console.log("EMPATASTE CONTRA LA MÁQUINA PETARDO");
+        Swal.fire({
+          icon: 'success',
+          title: 'EMPATASTE CONTRA LA MÁQUINA MOSTRO...',
+          text: 'Estas mejorando!',
+        });
         this.reiniciar();
       }
       else{
@@ -49,7 +55,14 @@ export class TatetiComponent implements OnInit {
   }
 
   reiniciar(){
+    var celdas = document.getElementsByClassName("celda");
+      for (let index = 0; index < celdas.length; index++) {
+        
+          celdas[index].setAttribute("value",'');
+          
+        }
     this.casilleros = new Array(9);
+    
   }
   
   empate():boolean{
@@ -74,19 +87,38 @@ export class TatetiComponent implements OnInit {
         disponible = true;
       }
     }
-    this.casilleros[numCasillero] = "o";
+    var fichaMaquina = this.ficha == "x" ? "o":"x";
+    this.casilleros[numCasillero] = fichaMaquina;
     var celdas = document.getElementsByClassName("celda");
       for (let index = 0; index < celdas.length; index++) {
         if(index == numCasillero){
-          celdas[index].setAttribute("value",'O');
+          celdas[index].setAttribute("value",fichaMaquina.toUpperCase());
           break;
         }
         
       }
+
+      if(this.gano(fichaMaquina)){
+        console.log("GANA LA MAQUINA");
+        Swal.fire({
+          icon: 'success',
+          title: 'GANA LA MAQUINA...',
+          text: 'soy imbencible!',
+        });
+        this.reiniciar();
+      }else if(this.empate()){
+        console.log("EMPATASTE CONTRA LA MÁQUINA PETARDO");
+        Swal.fire({
+          icon: 'success',
+          title: 'EMPATASTE CONTRA LA MÁQUINA MOSTRO...',
+          text: 'Estas mejorando!',
+        });
+        this.reiniciar();
+      }
   } 
 
   gano(letra:string):boolean {
-
+    
     if(this.casilleros[0] == letra && this.casilleros[1] == letra && this.casilleros[2] == letra) {
       return true;
     }
@@ -116,4 +148,7 @@ export class TatetiComponent implements OnInit {
     return false;
   }
 
+  eligeFicha(ficha:string){
+    this.ficha = ficha;
+  }
 }

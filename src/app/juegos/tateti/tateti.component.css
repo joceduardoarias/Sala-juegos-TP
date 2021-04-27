@@ -32,7 +32,9 @@ h1, h2, h3 {
     font-size: 20pt;
     text-align: center;
 	}
-
+.celda:hover{
+    background-color: #8f746c;
+}
 /* clear para los floats */
 
 #tablero:after {
