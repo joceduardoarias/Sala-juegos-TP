@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { TatetiService } from "../../services/tateti.service";
+import { Puntajes } from "../../modelos/puntajes";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-tateti',
@@ -10,12 +13,27 @@ export class TatetiComponent implements OnInit {
   
   comenzar:boolean = false;
   casilleros = new Array(9);
+  listaPuntajes = new Array();
   ficha :string = "";
+  contadorVitorias:number = 0;
+  contadorDerrotas:number = 0;
+  contadorEmpates: number = 0;
+  puntajes!:Puntajes;
+  puntajesVista!:Puntajes;
+  id: string = "";
 
-  constructor() {
+  tieneDatosCargados: boolean = false;
+
+  constructor(private tatetiServicio : TatetiService, private auth:AuthService) {    
+    this.puntajes = new Puntajes();
+    this.inicializarPuntajes();
+    this.puntajes.email = localStorage.getItem("usuario");
+    console.log(localStorage.getItem("usuario"));
+    this.getAll();
    }
 
   ngOnInit(): void {
+    
   }
   
   jugar(numeroCasillero:number){
@@ -32,6 +50,10 @@ export class TatetiComponent implements OnInit {
       }
       
       if(this.gano(this.ficha)){
+        this.contadorVitorias++;
+        this.puntajes.victorias = this.contadorVitorias.toString();
+        console.log(this.puntajes);
+        
         console.log("GANASTE");
         Swal.fire({
           icon: 'success',
@@ -40,10 +62,12 @@ export class TatetiComponent implements OnInit {
         });
         this.reiniciar();
       }else if(this.empate()){
-        console.log("EMPATASTE CONTRA LA MÁQUINA PETARDO");
+        console.log("EMPATASTE CONTRA LA MÁQUINA CRACK");
+        this.contadorEmpates++;
+        this.puntajes.empate = this.contadorEmpates.toString();
         Swal.fire({
           icon: 'success',
-          title: 'EMPATASTE CONTRA LA MÁQUINA MOSTRO...',
+          title: 'EMPATASTE CONTRA LA MÁQUINA CRACK...',
           text: 'Estas mejorando!',
         });
         this.reiniciar();
@@ -100,6 +124,8 @@ export class TatetiComponent implements OnInit {
 
       if(this.gano(fichaMaquina)){
         console.log("GANA LA MAQUINA");
+        this.contadorDerrotas++;
+        this.puntajes.derrotas = this.contadorDerrotas.toString();
         Swal.fire({
           icon: 'success',
           title: 'GANA LA MAQUINA...',
@@ -107,7 +133,9 @@ export class TatetiComponent implements OnInit {
         });
         this.reiniciar();
       }else if(this.empate()){
-        console.log("EMPATASTE CONTRA LA MÁQUINA PETARDO");
+        console.log("EMPATASTE CONTRA LA MÁQUINA CRACK");
+        this.contadorEmpates++;
+        this.puntajes.empate = this.contadorEmpates.toString();
         Swal.fire({
           icon: 'success',
           title: 'EMPATASTE CONTRA LA MÁQUINA MOSTRO...',
@@ -150,5 +178,43 @@ export class TatetiComponent implements OnInit {
 
   eligeFicha(ficha:string){
     this.ficha = ficha;
+  }
+
+  guardar(){
+    console.log(this.tieneDatosCargados);
+    
+    if(!this.tieneDatosCargados){
+      // this.tatetiServicio.create(this.puntajes);
+      console.log("guardar");
+      
+    }else{
+      
+      this.puntajes.victorias = (+(+this.puntajes.victorias) +(+this.puntajesVista.victorias)).toString();
+      this.puntajes.derrotas = (+(+this.puntajes.derrotas) +(+this.puntajesVista.derrotas)).toString();
+      this.puntajes.empate = (+(+this.puntajes.empate) +(+this.puntajesVista.empate)).toString();
+      this.tatetiServicio.update(this.id,this.puntajes);
+    }
+    
+    this.inicializarPuntajes();
+  }
+
+  getAll(){
+    var lista = this.tatetiServicio.tatetiRef.valueChanges({ idField: 'propertyId' })
+     lista.subscribe(lista=>{
+       console.log(lista);
+       for (var puntaje of lista) {
+         if (puntaje.email == this.puntajes.email) {
+           this.puntajesVista = puntaje;
+           this.tieneDatosCargados = true;
+           this.id = puntaje.propertyId;
+           break;
+         }
+       }
+     });
+  }
+  inicializarPuntajes(){
+    this.puntajes.derrotas = "0";
+    this.puntajes.victorias = "0";
+    this.puntajes.empate = "0";
   }
 }

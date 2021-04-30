@@ -68,6 +68,6 @@ h1, h2, h3 {
 }
 
 .marcador {
-    display: none;
+    display: inline-block;
     margin-left: 30px;
 }

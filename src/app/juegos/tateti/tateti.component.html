@@ -33,7 +33,9 @@
 </section>
 
 <section class="marcador">
-    <section id="ganadosH"></section>
-    <section id="ganadosC"></section>
-    <section id="empate"></section>
+    <section id="ganadosH" *ngIf="this.puntajesVista">{{this.puntajesVista.victorias}}</section>
+    <section id="ganadosC" *ngIf="this.puntajesVista">{{this.puntajesVista.derrotas}}</section>
+    <section id="empate" *ngIf="this.puntajesVista">{{this.puntajesVista.empate}}</section>
+    <button (click)="guardar()">Guardar</button>
+    <button (click)="getAll()">listar puntajes</button>
 </section>

@@ -21,6 +21,7 @@ import { PiedraPapleOTijeraComponent } from './juegos/piedra-paple-o-tijera/pied
 import { SalaDeJuegosComponent } from './components/sala-de-juegos/sala-de-juegos.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AnagramaComponent } from './juegos/anagrama/anagrama.component';
+import { MemotestComponent } from './juegos/memotest/memotest.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { AnagramaComponent } from './juegos/anagrama/anagrama.component';
     TatetiComponent,
     PiedraPapleOTijeraComponent,
     SalaDeJuegosComponent,
-    AnagramaComponent
+    AnagramaComponent,
+    MemotestComponent
   ],
   imports: [
     BrowserModule,

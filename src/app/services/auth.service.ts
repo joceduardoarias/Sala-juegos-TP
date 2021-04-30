@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
   
+  usuarioLogueadoEmail!:string;
 
   constructor(private afAuth: AngularFireAuth,
               private router: Router) {
@@ -38,6 +39,9 @@ export class AuthService {
     this.afAuth.onAuthStateChanged(user => {
       if (user) {
         resolve(user);
+        if(user.email)
+        this.usuarioLogueadoEmail = user.email;
+        localStorage.setItem("usuario",this.usuarioLogueadoEmail);
         //  console.log(user.email + " is logged in!");
       } else {
         reject(user);
