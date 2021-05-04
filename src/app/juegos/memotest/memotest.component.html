@@ -1,1 +1,58 @@
-<p>memotest works!</p>
+<div class="container">
+    <div align="center">
+		<h2>Match all cards to win!</h2>
+	</div>
+    <div *ngIf="!this.startGame">
+        <br>
+        <p>Match all cards to win!</p>
+        <p>You have a total of <b>{{this.userLife}}</b>tries.</p>
+        <br>
+        <h4>Start in <span style="color: #cc0000;font-size: 24px;">{{this.countDown}}</span>...</h4>
+    </div>
+    <div class="container" id="conImg">
+        <div class="row align-items-center text-center" size="8" *ngIf="this.startGame && this.gameState == 'init'">
+            <div class="col-sm-3 align-self-center"  size="3" *ngFor="let c of cardsArray; let i = index" style="float: left;margin-bottom: 5px;">
+                <!-- show card backgorund -->
+                <img src="../../../assets/background.png" *ngIf="c.pos != selectCard1pos && c.pos != selectCard2pos && c.val > -1" (click)="selectCard(c.pos, c.val, i)" style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
+                <!-- show card 1 selected -->
+                <img [src]="images[c.val]" *ngIf="c.pos == selectCard1pos && c.val > -1" style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
+                <!-- show card 2 selected -->
+                <img [src]="images[c.val]" *ngIf="c.pos == selectCard2pos && c.val > -1" style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
+                <!-- show hidden card -->
+                <img  *ngIf="c.val == -1" style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;visibility: hidden;">
+            </div>
+        </div>
+    </div>
+    <div align="center" *ngIf="this.startGame && this.gameState == 'init'">
+        <br>
+        <div class="row">
+            <div class="col">
+                <p>You have <span style="color: #00cc00; font-size: 24px;">{{this.userLife}}</span> tries...</p>
+            </div>
+            <div class="col">
+                <p><span style="color: #cc0000;font-size: 24px;">{{this.shownTime}}</span></p>
+            </div>
+        </div>               
+	</div>
+    <div align = "center" *ngIf="this.mostrar == 'gana'">
+            
+        <br>
+        <p>You have <span style="color: #00cc00;font-size: 24px;">WON</span>This one!</p>
+        <p>Would ypu like to try again</p>
+        <br>
+        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="this.restartGame()">play again</button>
+    </div>
+    <div align = "center" *ngIf="this.mostrar == 'pierde'">
+        <br>
+        <p>You have <span style="color: #cc0000;font-size: 24px;">LOST</span>This one!</p>
+        <p>Would ypu like to try again</p>
+        <br>
+        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="this.restartGame()">play again</button>
+    </div>
+    <!-- debug -->
+    <!-- <p>mostrar:{{this.mostrar}}</p> 
+    <p>startGAME:{{this.startGame}}</p>    
+    <p>stateGame:{{this.gameState}}</p> -->
+    
+</div>
+  

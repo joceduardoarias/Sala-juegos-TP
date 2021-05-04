@@ -22,6 +22,9 @@ import { SalaDeJuegosComponent } from './components/sala-de-juegos/sala-de-juego
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AnagramaComponent } from './juegos/anagrama/anagrama.component';
 import { MemotestComponent } from './juegos/memotest/memotest.component';
+import { HttpClientModule } from "@angular/common/http";
+import { HttpService } from "./services/http.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,9 +50,10 @@ import { MemotestComponent } from './juegos/memotest/memotest.component';
     AngularFirestoreModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
