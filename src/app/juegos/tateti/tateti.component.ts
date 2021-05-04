@@ -184,7 +184,7 @@ export class TatetiComponent implements OnInit {
     console.log(this.tieneDatosCargados);
     
     if(!this.tieneDatosCargados){
-      // this.tatetiServicio.create(this.puntajes);
+      this.tatetiServicio.create(this.puntajes);
       console.log("guardar");
       
     }else{
