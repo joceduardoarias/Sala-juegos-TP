@@ -1,5 +1,8 @@
 <app-nav-bar></app-nav-bar>    
-<br>
+<!-- <br> -->
+<body>
+  
+
 <header><h1>Ta Te Ti</h1></header>
 
 <section id="ficha">
@@ -11,7 +14,7 @@
 </section>
 
 <section id="turno"></section>
-
+ 
 <section id="tablero">
 
     <!-- <a class="celda" id="ceroCero" onclick="jugadaHumano(this, 0, 0)"></a><div class="celda" id="ceroUno" onclick="jugadaHumano(this, 0, 1)"></div><div class="celda" id="ceroDos" onclick="jugadaHumano(this, 0, 2)"></div><div class="celda" id="unoCero" onclick="jugadaHumano(this, 1, 0)"></div><div class="celda" id="unoUno" onclick="jugadaHumano(this, 1, 1)"></div><div class="celda" id="unoDos" onclick="jugadaHumano(this, 1, 2)"></div><div class="celda" id="dosCero" onclick="jugadaHumano(this, 2, 0)"></div><div class="celda" id="dosUno" onclick="jugadaHumano(this, 2, 1)"></div><div class="celda" id="dosDos" onclick="jugadaHumano(this, 2, 2)"></div> -->
@@ -29,13 +32,26 @@
         <input type="button" id="boton7" name="boton7" value=" " (click)="jugar(6)" class="celda">
         <input type="button" id="boton8" name="boton8" value=" " (click)="jugar(7)" class="celda">
         <input type="button" id="boton9" name="boton9" value=" " (click)="jugar(8)" class="celda">
-      </div>
+      </div>                   
 </section>
 
-<section class="marcador">
+<div class="container  d-flex justify-content-center">
+  <div class="row">
+    <div class="col-sm-auto">
+      <button type="button" class="btn btn-primary btn-lg"  (click)="guardar()">Guardar puntajes</button>
+    </div>
+    <div class="col-sm-auto">
+      <button type="button" class="btn btn-secondary btn-lg" (click)="mostrar()">Listar puntajes</button>  
+    </div>
+  </div>
+</div>  
+
+
+<!-- <section class="marcador">
     <section id="ganadosH" *ngIf="this.puntajesVista">{{this.puntajesVista.victorias}}</section>
     <section id="ganadosC" *ngIf="this.puntajesVista">{{this.puntajesVista.derrotas}}</section>
     <section id="empate" *ngIf="this.puntajesVista">{{this.puntajesVista.empate}}</section>
-    <button (click)="guardar()">Guardar</button>
-    <button (click)="getAll()">listar puntajes</button>
-</section>
+</section> -->
+
+</body>
+<app-listado-realtime></app-listado-realtime>

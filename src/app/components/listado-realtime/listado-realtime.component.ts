@@ -53,12 +53,18 @@ export class ListadoRealtimeComponent implements OnInit {
 
   getUsuarioActual(){
     
-    this.authService.isAuth().then((res:any)=>{
-      this.usuarioLogeado=res.email;
-      this.isLogged = true;
-    },error =>{
-      this.isLogged = false;
-    });
+    // this.authService.isAuth().then((res:any)=>{
+    //   this.usuarioLogeado=res.email;
+    //   this.isLogged = true;
+    // },error =>{
+    //   this.isLogged = false;
+    // });
+    this.usuarioLogeado = localStorage.getItem('usuario');
+    if (this.usuarioLogeado!= null) {
+        this.isLogged = true;
+    } else {
+        this.isLogged = false;
+    }
     
   }
   animacion(){

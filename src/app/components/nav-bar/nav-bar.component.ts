@@ -15,17 +15,23 @@ export class NavBarComponent implements OnInit {
   constructor(private authService : AuthService) { }
 
   ngOnInit(): void {
-    this.getUsuarioActual();
+    this.usuarioLogeado = localStorage.getItem('usuario');
+    this.getUsuarioActual();    
   }
   
   getUsuarioActual(){
     
-    this.authService.isAuth().then((res:any)=>{
-      this.usuarioLogeado=res.email;
-      this.isLogged = true;
-    },error =>{
-      this.isLogged = false;
-    });
+    // this.authService.isAuth().then((res:any)=>{
+    //   this.usuarioLogeado=res.email;
+    //   this.isLogged = true;
+    // },error =>{
+    //   this.isLogged = false;
+    // });
+    if (this.usuarioLogeado!= null) {
+        this.isLogged = true;
+    } else {
+        this.isLogged = false;
+    }
     
   }
   

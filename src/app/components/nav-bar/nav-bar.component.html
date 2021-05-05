@@ -15,8 +15,8 @@
           <a class="nav-link" routerLink="/quiensoy" href="#">¿Quien soy?</a>
         </li>
       </ul>
-      <button routerLink="/login" class="btn btn-outline-light my-2 my-sm-0" style="margin-right: 3px;" type="button" *ngIf="!isLogged">Iniciar sesión</button>
-      <button routerLink="/registro" class="btn btn-outline-light my-2 my-sm-0" type="button" *ngIf="!isLogged">Registrase</button>
+      <button routerLink="/ingreso/login" class="btn btn-outline-light my-2 my-sm-0" style="margin-right: 3px;" type="button" *ngIf="!isLogged">Iniciar sesión</button>
+      <button routerLink="/ingreso/registro" class="btn btn-outline-light my-2 my-sm-0" type="button" *ngIf="!isLogged">Registrase</button>
 
       <button routerLink="/login" class="btn btn-outline-light my-2 my-sm-0" style="margin-right: 3px;" type="button"(click)="logOut()" *ngIf="isLogged">Salir</button>
       <button routerLink="/registro" class="btn btn-outline-light my-2 my-sm-0" type="button" *ngIf="isLogged">Hola: {{usuarioLogeado}}</button>

@@ -25,6 +25,7 @@ export class AuthService {
  public async signOut() {
    await this.afAuth.signOut();
    this.router.navigate(['/']);
+   localStorage.clear();
  }
  /**
   * 
@@ -41,7 +42,6 @@ export class AuthService {
         resolve(user);
         if(user.email)
         this.usuarioLogueadoEmail = user.email;
-        localStorage.setItem("usuario",this.usuarioLogueadoEmail);
         //  console.log(user.email + " is logged in!");
       } else {
         reject(user);

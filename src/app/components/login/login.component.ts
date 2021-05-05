@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         timer: 1500
       });
       this.router.navigate(['/home']);
+      localStorage.setItem("usuario",this.email.value);
     }, error => {
       console.log(error.message);
       Swal.fire({

@@ -186,13 +186,26 @@ export class TatetiComponent implements OnInit {
     if(!this.tieneDatosCargados){
       this.tatetiServicio.create(this.puntajes);
       console.log("guardar");
-      
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Tus partidas están guardadas',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }else{
       
       this.puntajes.victorias = (+(+this.puntajes.victorias) +(+this.puntajesVista.victorias)).toString();
       this.puntajes.derrotas = (+(+this.puntajes.derrotas) +(+this.puntajesVista.derrotas)).toString();
       this.puntajes.empate = (+(+this.puntajes.empate) +(+this.puntajesVista.empate)).toString();
       this.tatetiServicio.update(this.id,this.puntajes);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Tus partidas están guardadas',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
     
     this.inicializarPuntajes();
@@ -201,7 +214,6 @@ export class TatetiComponent implements OnInit {
   getAll(){
     var lista = this.tatetiServicio.tatetiRef.valueChanges({ idField: 'propertyId' })
      lista.subscribe(lista=>{
-       console.log(lista);
        for (var puntaje of lista) {
          if (puntaje.email == this.puntajes.email) {
            this.puntajesVista = puntaje;
@@ -210,11 +222,22 @@ export class TatetiComponent implements OnInit {
            break;
          }
        }
-     });
+     });       
   }
   inicializarPuntajes(){
     this.puntajes.derrotas = "0";
     this.puntajes.victorias = "0";
     this.puntajes.empate = "0";
+  }
+  mostrar(){
+    console.log(this.puntajesVista);
+    
+      Swal.fire({
+        title: '<strong>Partidas</strong>',
+        icon: 'info',
+        html:
+        '<table class="table"><thead><tr><th scope="col">Jugador</th><th scope="col">Victorias</th><th scope="col">Derrotas</th><th scope="col">Empates</th></tr></thead><tbody><tr><th scope="row">'+this.puntajes.email+'</th><td>'+this.puntajesVista.victorias+'</td><td>'+this.puntajesVista.derrotas+'</td><td>'+this.puntajesVista.empate+'</td></tr>',
+      });
+    
   }
 }

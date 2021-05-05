@@ -51,7 +51,7 @@ import { HttpService } from "./services/http.service";
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule    
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
