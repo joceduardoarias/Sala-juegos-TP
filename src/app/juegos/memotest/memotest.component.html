@@ -1,17 +1,22 @@
+<app-nav-bar></app-nav-bar>    
+
+<body>
+    
+
 <div class="container">
     <div align="center">
-		<h2>Match all cards to win!</h2>
+		<h2 style="color: black;">¡Combina todas las cartas para ganar!</h2>
 	</div>
-    <div *ngIf="!this.startGame">
+    <div class="bg-dark text-white" *ngIf="!this.startGame" style="margin-left: 480px;width: -moz-fit-content;text-align: center;">
         <br>
-        <p>Match all cards to win!</p>
-        <p>You have a total of <b>{{this.userLife}}</b>tries.</p>
+        <p>¡Combina todas las cartas para ganar!</p>
+        <p>Tienes un total de <b>{{this.userLife}}</b> intentos.</p>
         <br>
-        <h4>Start in <span style="color: #cc0000;font-size: 24px;">{{this.countDown}}</span>...</h4>
+        <h4>Empezar en <span style="color: #cc0000;font-size: 24px;">{{this.countDown}}</span>...</h4>
     </div>
     <div class="container" id="conImg">
         <div class="row align-items-center text-center" size="8" *ngIf="this.startGame && this.gameState == 'init'">
-            <div class="col-sm-3 align-self-center"  size="3" *ngFor="let c of cardsArray; let i = index" style="float: left;margin-bottom: 5px;">
+            <div class="col-sm-3 align-self-center" id="tarjeta"  size="3" *ngFor="let c of cardsArray; let i = index" style="float: left;margin-bottom: 5px;">
                 <!-- show card backgorund -->
                 <img src="../../../assets/background.png" *ngIf="c.pos != selectCard1pos && c.pos != selectCard2pos && c.val > -1" (click)="selectCard(c.pos, c.val, i)" style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
                 <!-- show card 1 selected -->
@@ -27,27 +32,33 @@
         <br>
         <div class="row">
             <div class="col">
-                <p>You have <span style="color: #00cc00; font-size: 24px;">{{this.userLife}}</span> tries...</p>
+                <p class="bg-info text-white" style="width: -moz-fit-content;">Tienes <span style="color: white; font-size: 24px;">{{this.userLife}}</span> intentos...</p>
             </div>
             <div class="col">
-                <p><span style="color: #cc0000;font-size: 24px;">{{this.shownTime}}</span></p>
+                <p class="bg-info text-white" style="width: -moz-fit-content;"><span style="color: #cc0000;font-size: 24px;">{{this.shownTime}}</span></p>
             </div>
         </div>               
 	</div>
-    <div align = "center" *ngIf="this.mostrar == 'gana'">
+    <div class="bg-dark text-white" align = "center" *ngIf="this.mostrar == 'gana'" style="width: -moz-fit-content;">
             
         <br>
-        <p>You have <span style="color: #00cc00;font-size: 24px;">WON</span>This one!</p>
-        <p>Would ypu like to try again</p>
+        <p class="bg-primary text-white">Tienes ¡<span style="color: #00cc00;font-size: 24px;">Ganada </span>esta!</p>
+        <p class="bg-primary text-white">Le gustaría volver a intentarlo</p>
         <br>
-        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="this.restartGame()">play again</button>
+        <button type="button" class="btn bg-warning text-dark btn-lg btn-block" (click)="this.restartGame()">juega de nuevo</button>
+        <button type="button" class="btn bg-warning text-dark btn-lg btn-block" (click)="this.mostrarPartidas()">Listar resultados</button>
+        <button type="button" class="btn bg-warning text-dark btn-lg btn-block" (click)="this.guardar()">Guardar partida</button>
     </div>
-    <div align = "center" *ngIf="this.mostrar == 'pierde'">
+    <div align = "center" *ngIf="this.mostrar == 'pierde'" style="width: -moz-fit-content;">
+        <div style="margin-left: 480px;">
         <br>
-        <p>You have <span style="color: #cc0000;font-size: 24px;">LOST</span>This one!</p>
-        <p>Would ypu like to try again</p>
+        <p class="bg-primary text-white">¡Has <span style="color: #cc0000;font-size: 24px;">PERDIDO</span>este!</p>
+        <p class="bg-primary text-white">Le gustaría volver a intentarlo</p>
         <br>
-        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="this.restartGame()">play again</button>
+        <button type="button" class="btn bg-warning text-dark btn-lg btn-block" (click)="this.restartGame()">juega de nuevo</button>
+        <button type="button" class="btn bg-warning text-dark btn-lg btn-block" (click)="this.mostrarPartidas()">Listar resultados</button>
+        <button type="button" class="btn bg-warning text-dark btn-lg btn-block" (click)="this.guardar()">Guardar partida</button>
+    </div>
     </div>
     <!-- debug -->
     <!-- <p>mostrar:{{this.mostrar}}</p> 
@@ -55,4 +66,6 @@
     <p>stateGame:{{this.gameState}}</p> -->
     
 </div>
+</body>
+<app-listado-realtime></app-listado-realtime>
   

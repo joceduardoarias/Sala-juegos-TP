@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../services/http.service";
+import Swal from 'sweetalert2';
+import { Puntajes } from "../../modelos/puntajes";
+import { AuthService } from "../../services/auth.service";
+import { MemotestService } from "../../services/memotest.service";
+
 @Component({
   selector: 'app-memotest',
   templateUrl: './memotest.component.html',
   styleUrls: ['./memotest.component.css']
 })
 export class MemotestComponent implements OnInit {
-  mostrar:string = ""; 
-  gameState : string = "";
+  
+   mostrar:string = ""; 
+   gameState : string = "";
    startGame = false;
    countDown = 0;
    totalTime = 0;
@@ -28,13 +34,26 @@ export class MemotestComponent implements OnInit {
    selectCard2pos = -1;	// Selected card #2 position
    selectCard2val = -1;	// Selected card #2 value
    selectOldPosix = -1  //stored old position
+  //variable para guardar en firestore
+  listaPuntajes = new Array();
+  contadorVitorias:number = 0;
+  contadorDerrotas:number = 0;
+  puntajes!:Puntajes;
+  puntajesVista!:Puntajes;
+  id: string = "";
 
+  tieneDatosCargados: boolean = false;
    debugText = "Debug text goes here! :)";
 
-  constructor(private servicioHttp:HttpService) { 
+  constructor(private servicioHttp:HttpService,private auth:AuthService,private memotestService:MemotestService) { 
     this.servicioHttp.obtenerImagenes().subscribe((paises:any)=>{
         this.listaPises = paises;      
       });
+    this.puntajes = new Puntajes();
+    this.inicializarPuntajes();
+    this.puntajes.email = localStorage.getItem("usuario");
+    console.log(localStorage.getItem("usuario"));
+    this.getAll();
   }
 
   ngOnInit(): void {
@@ -98,6 +117,7 @@ export class MemotestComponent implements OnInit {
           this.userLife--;
           this.resetSelects();
           if (this.userLife <= 0 ) {
+            this.contadorDerrotas++;            
             this.restartGame();
           }
         }
@@ -132,7 +152,7 @@ export class MemotestComponent implements OnInit {
     this.countTime = 0;
     this.interCount = 0;
 
-    this.userLife = 10;
+    this.userLife = 4;
     this.resetSelects();
     this.populateCards();
   	this.shuffle(this.cardsArray);
@@ -193,6 +213,8 @@ export class MemotestComponent implements OnInit {
       if (winCheck == false) {
         this.gameState = 'win';
         this.mostrar = "gana";
+        this.contadorVitorias++;
+        this.puntajes.victorias = this.contadorVitorias.toString();
       }
     }
     
@@ -200,5 +222,67 @@ export class MemotestComponent implements OnInit {
   loseCon(){
     this.gameState = 'lose';
     this.mostrar = "pierde";
+    this.contadorDerrotas++;
+    this.puntajes.derrotas = this.contadorDerrotas.toString();
+    console.log(this.puntajes);
+    
+  }
+  guardar(){
+    console.log(this.tieneDatosCargados);
+    
+    if(!this.tieneDatosCargados){
+      this.memotestService.create(this.puntajes);
+      console.log("guardar");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Tus partidas están guardadas',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }else{
+      
+      this.puntajes.victorias = (+(+this.puntajes.victorias) +(+this.puntajesVista.victorias)).toString();
+      this.puntajes.derrotas = (+(+this.puntajes.derrotas) +(+this.puntajesVista.derrotas)).toString();
+      this.puntajes.empate = (+(+this.puntajes.empate) +(+this.puntajesVista.empate)).toString();
+      this.memotestService.update(this.id,this.puntajes);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Tus partidas están guardadas',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+    
+    this.inicializarPuntajes();
+  }
+  getAll(){
+    var lista = this.memotestService.memotestRef.valueChanges({ idField: 'propertyId' })
+     lista.subscribe(lista=>{
+       for (var puntaje of lista) {
+         if (puntaje.email == this.puntajes.email) {
+           this.puntajesVista = puntaje;
+           this.tieneDatosCargados = true;
+           this.id = puntaje.propertyId;
+           break;
+         }
+       }
+     });       
+  }
+  inicializarPuntajes(){
+    this.puntajes.derrotas = "0";
+    this.puntajes.victorias = "0";
+    this.puntajes.empate = "0";
+  }
+  mostrarPartidas(){
+    console.log(this.puntajesVista);
+    
+      Swal.fire({
+        title: '<strong>Partidas</strong>',
+        icon: 'info',
+        html:
+        '<table class="table"><thead><tr><th scope="col">Jugador</th><th scope="col">Victorias</th><th scope="col">Derrotas</th><th scope="col">Empates</th></tr></thead><tbody><tr><th scope="row">'+this.puntajes.email+'</th><td>'+this.puntajesVista.victorias+'</td><td>'+this.puntajesVista.derrotas+'</td><td>'+this.puntajesVista.empate+'</td></tr>',
+      });
   }
 }

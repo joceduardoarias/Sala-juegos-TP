@@ -44,4 +44,8 @@ export class LoginComponent implements OnInit {
       })
     });
   }
+  test(){
+    this.email.setValue("test@test.com");
+    this.password.setValue("123456");
+  }
 }
