@@ -24,6 +24,8 @@ import { AnagramaComponent } from './juegos/anagrama/anagrama.component';
 import { MemotestComponent } from './juegos/memotest/memotest.component';
 import { HttpClientModule } from "@angular/common/http";
 import { HttpService } from "./services/http.service";
+import { MatButtonModule } from "@angular/material/button";
+import { MatKeyboardModule } from "angular-onscreen-material-keyboard";
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { HttpService } from "./services/http.service";
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule    
+    HttpClientModule,
+    MatButtonModule,
+    MatKeyboardModule        
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
