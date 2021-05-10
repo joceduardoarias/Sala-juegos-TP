@@ -271,7 +271,7 @@
 
 .contenedor{
     background-image: url("../../../assets/marvel.jpg");
-    position: relative;
+    position: absolute;
     background-position: center;
     height: 100%;
     width: 100%;

@@ -26,6 +26,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpService } from "./services/http.service";
 import { MatButtonModule } from "@angular/material/button";
 import { MatKeyboardModule } from "angular-onscreen-material-keyboard";
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatKeyboardModule } from "angular-onscreen-material-keyboard";
     PiedraPapleOTijeraComponent,
     SalaDeJuegosComponent,
     AnagramaComponent,
-    MemotestComponent
+    MemotestComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,

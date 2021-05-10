@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+  <body class="bg-light">
+    
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Checkout form</h2>
+    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each  form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+  </div>
+
+  <div class="row justify-content-center">
+   
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Billing address</h4>
+      <form class="needs-validation"  [formGroup]="formEncuesta">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder=""   formControlName="nombre">
+            <div *ngIf="formEncuesta.get('nombre')!.invalid && (formEncuesta.get('nombre')!.dirty || formEncuesta.get('nombre')!.touched)"  class="alert-danger d-inline-flex"><span >Nombre requerido</span></div>
+          </div>
+          
+          <div class="col-md-6 mb-3">
+            <label for="apellido">Apelllido</label>
+            <input type="text" class="form-control" id="apellido" placeholder=""  formControlName="apellido">
+            <div *ngIf="formEncuesta.get('apellido')!.invalid && (formEncuesta.get('apellido')!.dirty || formEncuesta.get('apellido')!.touched)"  class="alert-danger d-inline-flex"><span>Apellido requerido</span></div>            
+          </div>
+        </div>       
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com"  formControlName="email">
+              <div *ngIf="formEncuesta.get('email')!.invalid && (formEncuesta.get('email')!.dirty || formEncuesta.get('email')!.touched)"  class="alert-danger d-inline-flex"><span>Email invalido</span></div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="telefono">Telefono</label>
+                <input type="tel" class="form-control" id="telefono" placeholder="11-1111-1111"  formControlName="telefono">
+                <div *ngIf="formEncuesta.get('telefono')!.invalid && (formEncuesta.get('telefono')!.dirty || formEncuesta.get('telefono')!.touched)"  class="alert-danger d-inline-flex">
+                    <div *ngIf="formEncuesta.get('telefono')!.errors!.required"  class="alert-danger d-inline-flex">
+                        <span>Telefono requerido</span>                       
+                    </div>
+                    <div *ngIf="formEncuesta.get('telefono')!.errors!.maxlength"  class="alert-danger d-inline-flex">
+                        <span>El número debe ser de hasta 11 dígitos</span>
+                    </div>  
+                </div>
+            </div>
+        </div>       
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="edad">Edad</label>
+                <input type="number" class="form-control" id="edad" formControlName="edad">
+                <div *ngIf="formEncuesta.get('edad')!.invalid && (formEncuesta.get('edad')!.dirty || formEncuesta.get('edad')!.touched)"  class="alert-danger d-inline-flex">
+                    <div *ngIf="formEncuesta.get('edad')!.errors!.required"  class="alert-danger d-inline-flex">
+                        <span>Edad requerido</span>                       
+                    </div>      
+                    <div *ngIf="formEncuesta.get('edad')!.errors!.max"  class="alert-danger d-inline-flex">
+                        <span>edad debe ser menor a 99 años</span>
+                    </div>
+                    <div *ngIf="formEncuesta.get('edad')!.errors!.min"  class="alert-danger d-inline-flex">
+                        <span>edad debe ser mayor  a 18 años</span>
+                    </div>            
+                </div>
+               
+            </div>
+            <div class="form-group col-md-6">
+            </div>
+            <div class="form-group col-md-4">
+            </div>
+        </div>
+      
+        <div>
+            <label for="exampleformControlNameTextarea1">¿Cuales juegos agregarias a nuestra sala?</label>
+            <textarea class="form-control" id="preguntaUno" rows="2" formControlName="preguntaUno"></textarea>
+            <div *ngIf="formEncuesta.get('preguntaUno')!.invalid && (formEncuesta.get('preguntaUno')!.dirty || formEncuesta.get('preguntaUno')!.touched)"  class="alert-danger d-inline-flex">
+                <span>Conteste la pregunta</span>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <div class="form-group">
+            <label for="preguntaDos">Como califica nuestra sala de juegos</label>
+            <select class="form-control" id="preguntaDos" formControlName="preguntaDos">
+              <option>Mala</option>
+              <option>Aburrida</option>
+              <option>Buena</option>
+              <option>Muy buena</option>
+              <option>Divertida</option>
+            </select>
+            <div  *ngIf="formEncuesta.get('preguntaDos')!.invalid && (formEncuesta.get('preguntaDos')!.dirty || formEncuesta.get('preguntaDos')!.touched)"  class="alert-danger d-inline-flex">
+                <span>Seleccione una opción</span>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="same-address" formControlName="preguntaTres" (click)="validaCheckBox()">
+          <label class="custom-control-label" for="same-address">Aceptar terminos y condiciones.</label>
+        </div>
+        <div *ngIf="!validaP3 && (formEncuesta.get('preguntaTres')!.dirty || formEncuesta.get('preguntaTres')!.touched)"  class="alert-danger d-inline-flex">
+            <span>Acepte los termino y condiciones!</span>
+        </div>
+        <hr class="mb-3">
+        <button class="btn btn-primary btn-lg btn-block" (click)="validarFormulario()">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+ 
+</div>
+
+
+    
+  </body>
+</html>

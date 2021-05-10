@@ -8,3 +8,8 @@
 </div>
 
 <div id="efecto" style="display:none" (click)="quitarEfectoPantalla()"> </div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-success" (click)="guardar()">Guardar partida</button>
+    <button *ngIf="tieneDatosCargados" type="button" class="btn btn-info" (click)="mostrar()">Listar resultados</button>
+  </div>
+<app-listado-realtime></app-listado-realtime>

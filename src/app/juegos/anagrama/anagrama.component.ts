@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Puntajes } from "../../modelos/puntajes";
+import Swal from 'sweetalert2';
+import { AuthService } from "../../services/auth.service";
+import { AnagramaService } from "../../services/anagrama.service";
 
 @Component({
   selector: 'app-anagrama',
   templateUrl: './anagrama.component.html',
-  styleUrls: ['./anagrama.component.css']
+  styleUrls: ['./anagrama.component.css']  
 })
 export class AnagramaComponent implements OnInit {
   
@@ -14,6 +18,15 @@ export class AnagramaComponent implements OnInit {
   enJuego: boolean = false;
   ocultarVerificar:boolean = false;
   Mensajes!: string;
+  //configuración partidas
+  contadorVictorias:number = 0;
+  contadorDerrotas:number = 0;
+  contadorEmpates: number = 0;
+  puntajes!:Puntajes;
+  puntajesVista!:Puntajes;
+  id: string = "";
+  tieneDatosCargados: boolean = false;
+
   diccionario: {[id: number]: string;} = {
     1:"ARGENTINA", 
     2:"ANAGRAMA", 
@@ -42,10 +55,21 @@ export class AnagramaComponent implements OnInit {
     25: "ABEJA",
     26: "ANTEOJOS"
 };
-  constructor() { }
+  
+
+  constructor(private anagramaServicio : AnagramaService, private auth:AuthService) {
+    this.puntajes = new Puntajes();
+    this.inicializarPuntajes();
+    this.puntajes.email = localStorage.getItem("usuario");
+    console.log(localStorage.getItem("usuario"));
+    this.getAll();
+   }
 
   ngOnInit(): void {
+   
   }
+  
+
 
   verificar(): boolean 
     {
@@ -81,23 +105,30 @@ export class AnagramaComponent implements OnInit {
   }
 
   MostarMensaje(mensaje:string="este es el mensaje",ganador:boolean=false) {
-    this.Mensajes=mensaje;    
+    this.Mensajes=mensaje;
     if(ganador)
       {
-        document.getElementById("mensajeID")!.textContent = this.Mensajes;
-        // $('#mensajeID').text(this.Mensajes);
-        document.getElementById("mensajeID")!.style.backgroundColor= "green";
-        // $('#mensajeID').css("background-color", "green");
+        this.contadorVictorias++;
+        this.puntajes.victorias = this.contadorVictorias.toString();
+        Swal.fire({
+          icon: 'success',
+          title: 'GANASTE...',
+          text: 'VAMOS POR MAS!',
+        });
       }else{
-        document.getElementById("mensajeID")!.textContent = this.Mensajes;
-        document.getElementById("mensajeID")!.style.backgroundColor= "red";
-        // $('#mensajeID').text(this.Mensajes);
-        // $('#mensajeID').css("background-color", "red");
+        this.contadorDerrotas++;
+        this.puntajes.derrotas = this.contadorDerrotas.toString();
+        Swal.fire({
+          icon: 'error',
+          title: 'PERDISTE...',
+          text: 'LA PRACTICA HACE AL MAESTRO!',
+        });
       }
-    var modelo=this;
-    setTimeout(function(){ 
-           modelo.ocultarVerificar=true;
-     }, 3000); 
+      
+    // var modelo=this;
+    // setTimeout(function(){ 
+    //        modelo.ocultarVerificar=true;
+    //  }, 3000); 
    }
    
    desordenar()
@@ -130,5 +161,77 @@ export class AnagramaComponent implements OnInit {
     this.palabraDesordenada = "";
     this.gano = false;
    }
+
+   guardar(){
+    console.log(this.tieneDatosCargados);
+    console.log(this.puntajes);
+    
+    if (this.puntajes) {
+        if(!this.tieneDatosCargados){
+        this.anagramaServicio.create(this.puntajes);
+        console.log("guardar");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Tus partidas están guardadas',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }else{
+        
+        this.puntajes.victorias = (+(+this.puntajes.victorias) +(+this.puntajesVista.victorias)).toString();
+        this.puntajes.derrotas = (+(+this.puntajes.derrotas) +(+this.puntajesVista.derrotas)).toString();
+        this.puntajes.empate = (+(+this.puntajes.empate) +(+this.puntajesVista.empate)).toString();
+        this.anagramaServicio.update(this.id,this.puntajes);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Tus partidas están guardadas',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+      
+      this.inicializarPuntajes();
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'JUGÁ...',
+        text: 'PARA GUARDAR UNA PARTIDA DEBES JUGARLA ANTES!',
+      });
+    }
+    
+  }
+
+  getAll(){
+    var lista = this.anagramaServicio.anagramaRef.valueChanges({ idField: 'propertyId' })
+     lista.subscribe(lista=>{
+       for (var puntaje of lista) {
+         if (puntaje.email == this.puntajes.email) {
+           this.puntajesVista = puntaje;
+           this.tieneDatosCargados = true;
+           this.id = puntaje.propertyId;
+           break;
+         }
+       }
+     });       
+  }
+
+  inicializarPuntajes(){
+    this.puntajes.derrotas = "0";
+    this.puntajes.victorias = "0";
+    this.puntajes.empate = "0";
+  }
+  mostrar(){
+    console.log(this.puntajesVista);
+    
+      Swal.fire({
+        title: '<strong>Partidas</strong>',
+        icon: 'info',
+        html:
+        '<table class="table"><thead><tr><th scope="col">Jugador</th><th scope="col">Victorias</th><th scope="col">Derrotas</th><th scope="col">Empates</th></tr></thead><tbody><tr><th scope="row">'+this.puntajes.email+'</th><td>'+this.puntajesVista.victorias+'</td><td>'+this.puntajesVista.derrotas+'</td><td>'+this.puntajesVista.empate+'</td></tr>',
+      });
+    
+  }
 
 }

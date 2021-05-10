@@ -12,7 +12,10 @@
           <a class="nav-link" routerLink="/juegos" *ngIf="isLogged">Juegos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/quiensoy" href="#">¿Quien soy?</a>
+          <a class="nav-link" routerLink="/inicio/quiensoy" href="#">¿Quien soy?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/inicio/encuesta" href="#">Encuesta</a>
         </li>
       </ul>
       <button routerLink="/ingreso/login" class="btn btn-outline-light my-2 my-sm-0" style="margin-right: 3px;" type="button" *ngIf="!isLogged">Iniciar sesión</button>
