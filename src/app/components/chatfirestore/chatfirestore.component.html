@@ -4,10 +4,17 @@
 <button (click)="EnviarMensaje()">Enviar</button> -->
 <!-- <app-form-subir-archivos></app-form-subir-archivos> -->
 <div class="panel-footer">
-    <div class="input-group">
-        <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Escriba su mensaje aquí..." [(ngModel)]="nuevoMensaje.mensaje" [formControl]="inputMensaje"/>
+    <!-- <div class="input-group">
+        <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Escriba su mensaje aquí..." />
         <span class="input-group-btn">
         <button class="btn btn-primary btn-sm" id="btn-chat" (click)="EnviarMensaje()">Send</button>
         </span>
-    </div>
+    </div> -->
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Escriba su mensaje aquí..." aria-label="Escriba su mensaje aquí..." aria-describedby="basic-addon2"
+        [(ngModel)]="nuevoMensaje.mensaje" [formControl]="inputMensaje">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="button" (click)="EnviarMensaje()">Enviar</button>
+        </div>
+      </div>
 </div>
