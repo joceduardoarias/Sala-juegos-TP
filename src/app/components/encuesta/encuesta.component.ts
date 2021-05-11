@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Encuesta } from "../../modelos/encuesta";
+import { EncuestaService } from "../../services/encuesta.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-encuesta',
@@ -19,8 +21,16 @@ export class EncuestaComponent implements OnInit {
   // telefono : FormControl =new FormControl('',[Validators.required,Validators.maxLength(11)]);
   validaP3 :boolean = true;
   formEncuesta: FormGroup = new FormGroup({});
+  nuevaEncuesta!: Encuesta;
 
-  constructor() { 
+  constructor(private encuestaService: EncuestaService, private auth:AuthService) { 
+    this.nuevaEncuesta = new Encuesta();
+    this.nuevaEncuesta.email = localStorage.getItem("usuario");
+    console.log(localStorage.getItem("usuario"));
+    // this.getAll();
+  }
+
+  ngOnInit(): void {
     this.formEncuesta = new FormGroup({
       
       nombre:  new FormControl('',Validators.required),
@@ -32,10 +42,7 @@ export class EncuestaComponent implements OnInit {
       preguntaTres : new FormControl('',Validators.required),
       telefono : new FormControl('',[Validators.required,Validators.maxLength(11)])
 
-    })
-  }
-
-  ngOnInit(): void {
+    });
   }
 
   validaCheckBox(){
@@ -47,11 +54,20 @@ export class EncuestaComponent implements OnInit {
     
   }
 
-  validarFormulario(){
+  guardar(){
     if(this.formEncuesta.status == "VALID"){
-      //guardar la encuesta!!!
-      console.log(this.formEncuesta.status);
-      
+
+      this.nuevaEncuesta.nombre = this.formEncuesta.get('nombre')?.value;      
+      this.nuevaEncuesta.apellido = this.formEncuesta.get('apellido')?.value;
+      this.nuevaEncuesta.email = this.formEncuesta.get('email')?.value;
+      this.nuevaEncuesta.edad = this.formEncuesta.get('edad')?.value;
+      this.nuevaEncuesta.telefono = this.formEncuesta.get('telefono')?.value;
+      this.nuevaEncuesta.preguntaUno = this.formEncuesta.get('preguntaUno')?.value;
+      this.nuevaEncuesta.preguntaDos = this.formEncuesta.get('preguntaDos')?.value;
+      this.nuevaEncuesta.preguntaTres = this.formEncuesta.get('preguntaTres')?.value;
+      //guardar en la colleción
+      this.encuestaService.create(this.nuevaEncuesta);
+      this.formEncuesta.reset();
     }
   }
 }

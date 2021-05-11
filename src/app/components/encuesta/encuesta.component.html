@@ -1,12 +1,12 @@
-<!doctype html>
-<html lang="en">
+<app-nav-bar></app-nav-bar>    
 
-  <body class="bg-light">
+<body class="bg-light">
     
 <div class="container">
   <div class="py-5 text-center">
-    <h2>Checkout form</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each  form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    <h2>Encuesta</h2>
+    <p class="lead">¿Deseas contestar una breve encuesta para ayudarnos a mejorar nuestra sala de juegos?</p>
+    <p class="lead">¡Sólo te tomará 5 minutos!</p>
   </div>
 
   <div class="row justify-content-center">
@@ -100,15 +100,11 @@
             <span>Acepte los termino y condiciones!</span>
         </div>
         <hr class="mb-3">
-        <button class="btn btn-primary btn-lg btn-block" (click)="validarFormulario()">Enviar</button>
+        <button class="btn btn-primary btn-lg btn-block" (click)="guardar()" [disabled]="!(this.formEncuesta.status == 'VALID')">Enviar</button>
       </form>
     </div>
   </div>
-
- 
 </div>
+</body>
+<app-listado-realtime></app-listado-realtime>
 
-
-    
-  </body>
-</html>
