@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     .then (res=>{
       console.log(res);
       Swal.fire({
-        position: 'top-end',
+        position: 'center',
         icon: 'success',
         title: 'Bienvenido a la Sala de juegos',
         showConfirmButton: false,

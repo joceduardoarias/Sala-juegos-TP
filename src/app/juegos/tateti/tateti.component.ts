@@ -21,8 +21,9 @@ export class TatetiComponent implements OnInit {
   puntajes!:Puntajes;
   puntajesVista!:Puntajes;
   id: string = "";
-
+  disabled:boolean = false;
   tieneDatosCargados: boolean = false;
+  eligioFicha:boolean=false;
 
   constructor(private tatetiServicio : TatetiService, private auth:AuthService) {    
     this.puntajes = new Puntajes();
@@ -37,44 +38,55 @@ export class TatetiComponent implements OnInit {
   }
   
   jugar(numeroCasillero:number){
-    
-    if(!this.casilleros[numeroCasillero]){
-      this.casilleros[numeroCasillero] = this.ficha;
-      var celdas = document.getElementsByClassName("celda");
-      for (let index = 0; index < celdas.length; index++) {
-        if(index == numeroCasillero){
-          celdas[index].setAttribute("value",this.ficha.toUpperCase());
-          break;
+    this.disabled = true;
+      if(this.eligioFicha){
+      if(!this.casilleros[numeroCasillero]){
+        this.casilleros[numeroCasillero] = this.ficha;
+        var celdas = document.getElementsByClassName("celda");
+        for (let index = 0; index < celdas.length; index++) {
+          if(index == numeroCasillero){
+            celdas[index].setAttribute("value",this.ficha.toUpperCase());
+            break;
+          }
+          
         }
         
+        if(this.gano(this.ficha)){
+          this.contadorVitorias++;
+          this.puntajes.victorias = this.contadorVitorias.toString();
+          console.log(this.puntajes);
+          
+          console.log("GANASTE");
+          Swal.fire({
+            icon: 'success',
+            title: 'Ganaste...',
+            text: 'Vamos por mas!',
+          });
+          this.reiniciar();
+        }else if(this.empate()){
+          console.log("EMPATASTE CONTRA LA MÁQUINA CRACK");
+          this.contadorEmpates++;
+          this.puntajes.empate = this.contadorEmpates.toString();
+          Swal.fire({
+            icon: 'success',
+            title: 'EMPATASTE CONTRA LA MÁQUINA CRACK...',
+            text: 'Estas mejorando!',
+          });
+          this.reiniciar();
+        }
+        else{
+          setTimeout(() => this.juegaMaquina(), 500);
+        }
       }
-      
-      if(this.gano(this.ficha)){
-        this.contadorVitorias++;
-        this.puntajes.victorias = this.contadorVitorias.toString();
-        console.log(this.puntajes);
-        
-        console.log("GANASTE");
-        Swal.fire({
-          icon: 'success',
-          title: 'Ganaste...',
-          text: 'Vamos por mas!',
-        });
-        this.reiniciar();
-      }else if(this.empate()){
-        console.log("EMPATASTE CONTRA LA MÁQUINA CRACK");
-        this.contadorEmpates++;
-        this.puntajes.empate = this.contadorEmpates.toString();
-        Swal.fire({
-          icon: 'success',
-          title: 'EMPATASTE CONTRA LA MÁQUINA CRACK...',
-          text: 'Estas mejorando!',
-        });
-        this.reiniciar();
-      }
-      else{
-        setTimeout(() => this.juegaMaquina(), 500);
-      }
+    }else{
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: '<h1>¡Elige una ficha!</h1> <h3></h3>',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.disabled = false;
     }
   }
 
@@ -143,41 +155,52 @@ export class TatetiComponent implements OnInit {
         });
         this.reiniciar();
       }
+      this.disabled = false;
   } 
 
   gano(letra:string):boolean {
     
     if(this.casilleros[0] == letra && this.casilleros[1] == letra && this.casilleros[2] == letra) {
+      this.disabled = false;
       return true;
     }
     if(this.casilleros[3] == letra && this.casilleros[4] == letra && this.casilleros[5] == letra) {
+      this.disabled = false;
       return true;
     }
     if(this.casilleros[6] == letra && this.casilleros[7] == letra && this.casilleros[8] == letra) {
+      this.disabled = false;
       return true;
     }
 
     if(this.casilleros[0] == letra && this.casilleros[3] == letra && this.casilleros[6] == letra) {
+      this.disabled = false;
       return true;
     }
     if(this.casilleros[1] == letra && this.casilleros[4] == letra && this.casilleros[7] == letra) {
+      this.disabled = false;
       return true;
     }
     if(this.casilleros[2] == letra && this.casilleros[5] == letra && this.casilleros[8] == letra) {
+      this.disabled = false;
       return true;
     }
 
     if(this.casilleros[0] == letra && this.casilleros[4] == letra && this.casilleros[8] == letra) {
+      this.disabled = false;
       return true;
     }
     if(this.casilleros[2] == letra && this.casilleros[4] == letra && this.casilleros[6] == letra) {
+      this.disabled = false;
       return true;
     }
     return false;
   }
 
   eligeFicha(ficha:string){
+
     this.ficha = ficha;
+    this.eligioFicha = true;
   }
 
   guardar(){

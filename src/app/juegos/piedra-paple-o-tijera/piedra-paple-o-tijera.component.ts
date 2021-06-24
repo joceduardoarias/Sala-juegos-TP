@@ -46,17 +46,38 @@ export class PiedraPapleOTijeraComponent implements OnInit {
 
       if(eleccionUsuario == 0){//el usuario eligio piedra 
           if(this.opciones[this.eleccionMaquina] == 1){//si la maquina eligio papel 
-              document.getElementById('efecto')!.innerHTML ='<h1>¡Perdiste!</h1> <h3>La maquina eligio papel y tu piedra.</h3>';
+              // document.getElementById('efecto')!.innerHTML ='<h1>¡Perdiste!</h1> <h3>La maquina eligio papel y tu piedra.</h3>';
+              Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: '<h1>¡Perdiste!</h1> <h3>La maquina eligio papel y tu piedra.</h3>',
+                showConfirmButton: false,
+                timer: 1500
+              });
               this.contadorDerrotas++;
               this.puntajes.derrotas = this.contadorDerrotas.toString();
           }else{
               if(this.opciones[this.eleccionMaquina] == 2){
-                  document.getElementById('efecto')!.innerHTML ='<h1>¡Ganaste!</h1> <h3>La maquina eligio tijera y tu piedra.</h3>';
+                  // document.getElementById('efecto')!.innerHTML ='<h1>¡Ganaste!</h1> <h3>La maquina eligio tijera y tu piedra.</h3>';
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '<h1>¡Ganaste!</h1> <h3>La maquina eligio tijera y tu piedra.</h3>',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                   this.contadorVitorias++;
                   this.puntajes.victorias = this.contadorVitorias.toString();
               }else{
                   if(this.opciones[this.eleccionMaquina] == 0){
-                      document.getElementById('efecto')!.innerHTML ='<h1>¡Empate!</h1> <h3>Ambos eligieron piedra.</h3>';
+                      // document.getElementById('efecto')!.innerHTML ='<h1>¡Empate!</h1> <h3>Ambos eligieron piedra.</h3>';
+                      Swal.fire({
+                        position: 'center',
+                        icon: 'info',
+                        title: '<h1>¡Empate!</h1> <h3>Ambos eligieron piedra.</h3>',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                       this.contadorEmpates++;
                       this.puntajes.empate = this.contadorEmpates.toString();
                   }
@@ -66,18 +87,39 @@ export class PiedraPapleOTijeraComponent implements OnInit {
 
       if(eleccionUsuario == 1){//el usuario eligio papel 
           if(this.opciones[this.eleccionMaquina] == 2){
-              document.getElementById('efecto')!.innerHTML ='<h1>¡Perdiste!</h1> <h3>La maquina eligio tijera y tu papel.</h3>';
+              // document.getElementById('efecto')!.innerHTML ='<h1>¡Perdiste!</h1> <h3>La maquina eligio tijera y tu papel.</h3>';
+              Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: '<h1>¡Perdiste!</h1> <h3>La maquina eligio tijera y tu papel.</h3>',
+                showConfirmButton: false,
+                timer: 1500
+              });
               this.contadorDerrotas++;
               this.puntajes.derrotas = this.contadorDerrotas.toString();
           }else{
               if(this.opciones[this.eleccionMaquina] == 0){
-                  document.getElementById('efecto')!.innerHTML ='<h1>¡Ganaste!</h1> <h3>La maquina eligio piedra y tu papel.</h3>';
+                  // document.getElementById('efecto')!.innerHTML ='<h1>¡Ganaste!</h1> <h3>La maquina eligio piedra y tu papel.</h3>';
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '<h1>¡Ganaste!</h1> <h3>La maquina eligio piedra y tu papel.</h3>',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                   this.contadorVitorias++;
                   this.puntajes.victorias = this.contadorVitorias.toString();
                   
               }else{
                   if(this.opciones[this.eleccionMaquina] == 1){
-                      document.getElementById('efecto')!.innerHTML ='<h1>¡Empate!</h1> <h3>Ambos eligieron papel.</h3>'; 
+                      // document.getElementById('efecto')!.innerHTML ='<h1>¡Empate!</h1> <h3>Ambos eligieron papel.</h3>'; 
+                      Swal.fire({
+                        position: 'center',
+                        icon: 'info',
+                        title: '<h1>¡Empate!</h1> <h3>Ambos eligieron papel.</h3>',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                       this.contadorEmpates++;
                       this.puntajes.empate = this.contadorEmpates.toString();
                   }
@@ -87,17 +129,38 @@ export class PiedraPapleOTijeraComponent implements OnInit {
 
       if(eleccionUsuario == 2) {//el usuario eligio tijera 
           if(this.opciones[this.eleccionMaquina] == 1){
-              document.getElementById('efecto')!.innerHTML ='<h1>¡Ganaste!</h1> <h3>La maquina eligio papel y tu tijera.</h3>';
+              // document.getElementById('efecto')!.innerHTML ='<h1>¡Ganaste!</h1> <h3>La maquina eligio papel y tu tijera.</h3>';
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: '<h1>¡Ganaste!</h1> <h3>La maquina eligio papel y tu tijera.</h3>',
+                showConfirmButton: false,
+                timer: 1500
+              });
               this.contadorVitorias++;
               this.puntajes.victorias = this.contadorVitorias.toString();  
           }else{
               if(this.opciones[this.eleccionMaquina] == 0){
-                  document.getElementById('efecto')!.innerHTML ='<h1>¡Perdiste!</h1> <h3>La maquina eligio piedra y tu tijera.</h3>'; 
+                  // document.getElementById('efecto')!.innerHTML ='<h1>¡Perdiste!</h1> <h3>La maquina eligio piedra y tu tijera.</h3>'; 
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'info',
+                    title: '<h1>¡Perdiste!</h1> <h3>La maquina eligio piedra y tu tijera.</h3>',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                   this.contadorDerrotas++;
                   this.puntajes.derrotas = this.contadorDerrotas.toString();
               }else{
                   if(this.opciones[this.eleccionMaquina] == 2) {
                       document.getElementById('efecto')!.innerHTML ='<h1>¡Empate!</h1> <h3>Ambos eligieron tijera.</h3>';
+                      Swal.fire({
+                        position: 'center',
+                        icon: 'info',
+                        title: '<h1>¡Empate!</h1> <h3>Ambos eligieron tijera.</h3>',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                       this.contadorEmpates++;
                       this.puntajes.derrotas = this.contadorEmpates.toString();
                   }
@@ -105,7 +168,7 @@ export class PiedraPapleOTijeraComponent implements OnInit {
           }
       }
 
-      document.getElementById('efecto')!.style.display = "";
+      // document.getElementById('efecto')!.style.display = "";
   }
 
   quitarEfecto() {

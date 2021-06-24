@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Encuesta } from "../../modelos/encuesta";
 import { EncuestaService } from "../../services/encuesta.service";
 import { AuthService } from "../../services/auth.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-encuesta',
@@ -11,14 +12,6 @@ import { AuthService } from "../../services/auth.service";
 })
 export class EncuestaComponent implements OnInit {
 
-  // nombre: FormControl = new FormControl('',Validators.required);
-  // apellido: FormControl = new FormControl('',Validators.required);
-  // edad: FormControl = new FormControl('',[Validators.required,Validators.min(18),Validators.max(99)]);
-  // email: FormControl = new FormControl('',[Validators.required,Validators.email]);
-  // preguntaUno : FormControl =new FormControl('',Validators.required);
-  // preguntaDos : FormControl =new FormControl('',Validators.required);
-  // preguntaTres : FormControl =new FormControl('',Validators.required);
-  // telefono : FormControl =new FormControl('',[Validators.required,Validators.maxLength(11)]);
   validaP3 :boolean = true;
   formEncuesta: FormGroup = new FormGroup({});
   nuevaEncuesta!: Encuesta;
@@ -56,18 +49,43 @@ export class EncuestaComponent implements OnInit {
 
   guardar(){
     if(this.formEncuesta.status == "VALID"){
-
-      this.nuevaEncuesta.nombre = this.formEncuesta.get('nombre')?.value;      
-      this.nuevaEncuesta.apellido = this.formEncuesta.get('apellido')?.value;
-      this.nuevaEncuesta.email = this.formEncuesta.get('email')?.value;
-      this.nuevaEncuesta.edad = this.formEncuesta.get('edad')?.value;
-      this.nuevaEncuesta.telefono = this.formEncuesta.get('telefono')?.value;
-      this.nuevaEncuesta.preguntaUno = this.formEncuesta.get('preguntaUno')?.value;
-      this.nuevaEncuesta.preguntaDos = this.formEncuesta.get('preguntaDos')?.value;
-      this.nuevaEncuesta.preguntaTres = this.formEncuesta.get('preguntaTres')?.value;
-      //guardar en la colleción
-      this.encuestaService.create(this.nuevaEncuesta);
-      this.formEncuesta.reset();
+      if(this.validaP3){
+        this.nuevaEncuesta.nombre = this.formEncuesta.get('nombre')?.value;      
+        this.nuevaEncuesta.apellido = this.formEncuesta.get('apellido')?.value;
+        this.nuevaEncuesta.email = this.formEncuesta.get('email')?.value;
+        this.nuevaEncuesta.edad = this.formEncuesta.get('edad')?.value;
+        this.nuevaEncuesta.telefono = this.formEncuesta.get('telefono')?.value;
+        this.nuevaEncuesta.preguntaUno = this.formEncuesta.get('preguntaUno')?.value;
+        this.nuevaEncuesta.preguntaDos = this.formEncuesta.get('preguntaDos')?.value;
+        this.nuevaEncuesta.preguntaTres = this.formEncuesta.get('preguntaTres')?.value;
+        //guardar en la colleción
+        this.encuestaService.create(this.nuevaEncuesta);
+        this.formEncuesta.reset();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Gracias por contestar nuestra encuesta',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }else{
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'Debe aceptar los terminos y condiciones',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+      
+    }else{
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Todos los campos son requeridos',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   }
 }
