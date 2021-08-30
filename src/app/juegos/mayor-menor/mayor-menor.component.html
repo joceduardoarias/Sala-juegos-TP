@@ -1,0 +1,29 @@
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="d-flex flex-column pt-5">
+                        <button type="button" class="btn btn-primary" (click)="mayor()">Mayor</button>
+                        <button type="button" class="btn btn-danger" (click)="menor()">Menor</button>     
+                    </div>                    
+                </div>
+                <div class="col-md-4">
+                    <div id="carta">
+                        <div id="simboloArriba"></div>
+                        <div id="numero">A</div>
+                        <div id="simboloAbajo"></div>
+                    </div>
+                    <div id="boton-nueva"> 
+                        <!-- <button class="boton" (click)="generacionCarta()">Nueva Carta</button> -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex flex-column pt-5">
+                        <button type="button" class="btn btn-primary" (click)="guardar()">Guardar Partida</button>
+                        <button type="button" class="btn btn-danger" (click)="mostrar()">Listar resultados</button>     
+                    </div>                    
+                </div>
+            </div>           
+        </div>
+    </body>

@@ -247,11 +247,13 @@ export class TatetiComponent implements OnInit {
        }
      });       
   }
+  
   inicializarPuntajes(){
     this.puntajes.derrotas = "0";
     this.puntajes.victorias = "0";
     this.puntajes.empate = "0";
   }
+
   mostrar(){
     console.log(this.puntajesVista);
     
@@ -263,4 +265,5 @@ export class TatetiComponent implements OnInit {
       });
     
   }
+
 }

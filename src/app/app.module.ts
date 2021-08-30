@@ -27,6 +27,7 @@ import { HttpService } from "./services/http.service";
 import { MatButtonModule } from "@angular/material/button";
 import { MatKeyboardModule } from "angular-onscreen-material-keyboard";
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { MayorMenorComponent } from './juegos/mayor-menor/mayor-menor.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
     SalaDeJuegosComponent,
     AnagramaComponent,
     MemotestComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    MayorMenorComponent
   ],
   imports: [
     BrowserModule,

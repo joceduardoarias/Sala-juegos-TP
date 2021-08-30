@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MayorMenorComponent } from '../juegos/mayor-menor/mayor-menor.component';
 import { SalaDeJuegosComponent } from '../components/sala-de-juegos/sala-de-juegos.component';
 import { AnagramaComponent } from '../juegos/anagrama/anagrama.component';
 import { MemotestComponent } from '../juegos/memotest/memotest.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'anagrama',component:AnagramaComponent},
   {path: 'sala', component: SalaDeJuegosComponent},
   {path: "memotest",component: MemotestComponent},
+  {path: "mayorMenor",component: MayorMenorComponent},
   {path:'',redirectTo:'sala',pathMatch:'full'}
 ];
 
