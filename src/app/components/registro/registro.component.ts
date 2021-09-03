@@ -43,7 +43,7 @@ export class RegistroComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      this.router.navigate(['/login']);
+      this.router.navigate(['/ingreso/login']);
       
     }, error =>{
       console.log(error.message);
