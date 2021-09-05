@@ -86,6 +86,7 @@ export class MayorMenorComponent implements OnInit {
     this.inicializarPuntajes();
     this.puntajes.email = localStorage.getItem("usuario");
     console.log(localStorage.getItem("usuario"));
+    this.getAll();
    }
 
   ngOnInit(): void {
@@ -148,21 +149,24 @@ export class MayorMenorComponent implements OnInit {
   }
     mayor(){
       this.generacionCarta("mayor");
-      console.log("Carta actual: ",this.cartaActual);
-      console.log("Carta anterior: ",this.cartaAnterior);
+      
       //Juagar
       if (this.cartaActual[1].numero == this.cartaAnterior[1].numero) {
         console.log("empate");
-        
+        this.contadorEmpates++;
+        this.puntajes.empate = this.contadorEmpates.toString();
       }
 
       if (this.cartaActual[1].numero > this.cartaAnterior[1].numero) {
         console.log("ganaste");
-        
+        this.contadorVitorias++;
+        this.puntajes.victorias = this.contadorVitorias.toString();
       } else {
 
         if (this.cartaActual[1].numero < this.cartaAnterior[1].numero) {
-          console.log("perdiste"); 
+          console.log("perdiste");
+          this.contadorDerrotas++; 
+          this.puntajes.derrotas = this.contadorDerrotas.toString();
         }        
         
       }
@@ -170,21 +174,24 @@ export class MayorMenorComponent implements OnInit {
 
     menor(){
       this.generacionCarta("menor");
-      console.log("Carta actual: ",this.cartaActual);
-      console.log("Carta anterior: ",this.cartaAnterior);
+      
       //Juagar
       if (this.cartaActual[1].numero == this.cartaAnterior[1].numero) {
         console.log("empate");
-        
+        this.contadorEmpates++;
+        this.puntajes.empate = this.contadorEmpates.toString();
       }
 
       if (this.cartaActual[1].numero < this.cartaAnterior[1].numero) {
         console.log("ganaste");
-        
+        this.contadorVitorias++;
+        this.puntajes.victorias = this.contadorVitorias.toString();
       } else {
 
         if (this.cartaActual[1].numero > this.cartaAnterior[1].numero) {
           console.log("perdiste"); 
+          this.contadorDerrotas++;
+          this.puntajes.derrotas = this.contadorDerrotas.toString();
         }        
         
       }
@@ -194,9 +201,14 @@ export class MayorMenorComponent implements OnInit {
       this.puntajes.derrotas = "0";
       this.puntajes.victorias = "0";
       this.puntajes.empate = "0";
+      //Inicializa contadores
+      this.contadorDerrotas = 0;
+      this.contadorEmpates = 0;
+      this.contadorVitorias = 0;
     }
 
     guardar(){
+      console.log('bug');
       
       if(!this.tieneDatosCargados){
         this.mayorMenorService.create(this.puntajes);

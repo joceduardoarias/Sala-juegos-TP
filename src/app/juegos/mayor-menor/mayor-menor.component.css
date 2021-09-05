@@ -7,6 +7,7 @@ html, body {
 
 body{
     background-color: #0e7e12;
+    position: absolute;
 }
 #carta{
     width: 300px;

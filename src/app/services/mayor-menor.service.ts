@@ -21,6 +21,8 @@ export class MayorMenorService {
   }
 
   create(puntajes: Puntajes): any {
+    console.log(puntajes);
+    
     return this.mayorMenorRef.add({...puntajes});
   }
 

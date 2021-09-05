@@ -1,4 +1,4 @@
-
+<app-nav-bar></app-nav-bar>  
     <body>
         <div class="container">
             <div class="row">
@@ -6,17 +6,29 @@
                     <div class="d-flex flex-column pt-5">
                         <button type="button" class="btn btn-primary" (click)="mayor()">Mayor</button>
                         <button type="button" class="btn btn-danger" (click)="menor()">Menor</button>     
-                    </div>                    
+                    </div>  
+                    <div class="container-flex pt-5">
+                        <button type="button" class="btn btn-primary">
+                            Victorias <span class="badge badge-light">{{contadorVitorias}}</span>
+                          </button>
+                    </div>
+                    <div class="container-flex">
+                        <button type="button" class="btn btn-warning">
+                            Empates <span class="badge badge-light">{{contadorEmpates}}</span>
+                          </button>
+                    </div>
+                    <div class="container-flex">
+                        <button type="button" class="btn btn-danger">
+                            Derrotas <span class="badge badge-light">{{contadorDerrotas}}</span>
+                          </button>
+                    </div>                  
                 </div>
                 <div class="col-md-4">
                     <div id="carta">
                         <div id="simboloArriba"></div>
                         <div id="numero">A</div>
                         <div id="simboloAbajo"></div>
-                    </div>
-                    <div id="boton-nueva"> 
-                        <!-- <button class="boton" (click)="generacionCarta()">Nueva Carta</button> -->
-                    </div>
+                    </div>                   
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex flex-column pt-5">
