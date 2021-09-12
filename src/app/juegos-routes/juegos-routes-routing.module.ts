@@ -6,6 +6,7 @@ import { AnagramaComponent } from '../juegos/anagrama/anagrama.component';
 import { MemotestComponent } from '../juegos/memotest/memotest.component';
 import { PiedraPapleOTijeraComponent } from '../juegos/piedra-paple-o-tijera/piedra-paple-o-tijera.component';
 import { TatetiComponent } from '../juegos/tateti/tateti.component';
+import { AhoracadoComponent } from '../juegos/ahoracado/ahoracado.component';
 
 const routes: Routes = [
   // { path: '', component: JuegosRoutesComponent }
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'sala', component: SalaDeJuegosComponent},
   {path: "memotest",component: MemotestComponent},
   {path: "mayorMenor",component: MayorMenorComponent},
+  {path:"ahorcado",component:AhoracadoComponent},
   {path:'',redirectTo:'sala',pathMatch:'full'}
 ];
 

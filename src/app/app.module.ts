@@ -28,6 +28,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatKeyboardModule } from "angular-onscreen-material-keyboard";
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { MayorMenorComponent } from './juegos/mayor-menor/mayor-menor.component';
+import { AhoracadoComponent } from './juegos/ahoracado/ahoracado.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MayorMenorComponent } from './juegos/mayor-menor/mayor-menor.component'
     AnagramaComponent,
     MemotestComponent,
     EncuestaComponent,
-    MayorMenorComponent
+    MayorMenorComponent,
+    AhoracadoComponent
   ],
   imports: [
     BrowserModule,
