@@ -1,41 +1,34 @@
-<app-nav-bar></app-nav-bar>    
+<app-nav-bar></app-nav-bar>
 <div class="row">
-    <div class="col text-center">
-      <img width="200px" height="200px" src="assets/img/{{ intentos }}.png" class="ahorcado-img">
-      <h3>Intentos <small> {{ intentos }} / 9 </small></h3>
-    </div>
+  <div class="col text-center">
+    <img id="ahorcado-img" width="200px" height="200px" src="assets/img/{{ intentos }}.png" class="ahorcado-img">
+    <h3>Intentos <small> {{ intentos }} / 9 </small></h3>
+    <button type="button" class="btn btn-primary">
+      Victorias <span class="badge badge-light">{{contadorVitorias}}</span>
+    </button>
+
+  <button type="button" class="btn btn-danger">
+      Derrotas <span class="badge badge-light">{{contadorDerrotas}}</span>
+    </button>
+    <button class="btn btn-warning" (click)="mostrar()">Listar Resultados</button>  
+  <button class="btn btn-success" (click)="guardar()">Guardar</button>
   </div>
-  
-  
-  
-  <div class="row">
-    <div class="col text-center">
-        <h1> {{ palabraOculta }} </h1>
-    </div>
+</div>
+
+<div class="row">
+  <div class="col text-center">
+    <h1> {{ palabraOculta }} </h1>
   </div>
-  
-  
-  <div class="row" *ngIf="gano">
-    <div class="col text-center">
-        <h1> Felicidades Ganaste!! </h1>
-        <h4>:D</h4>
-    </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col text-center">
+    <button (click)="comprobar( letra )" *ngFor="let letra of letras" class="btn btn-primary">
+      {{letra}}
+    </button>
   </div>
-  
-  
-  <div class="row" *ngIf="perdio">
-    <div class="col text-center">
-        <h1> Lo siento, Perdiste  :( </h1>
-        <h4>{{ palabra }}</h4>
-    </div>
-  </div>
-  
-  
-  <div class="row" *ngIf=" !gano && !perdio">
-    <div class="col text-center">
-        <button (click)="comprobar( letra )"  *ngFor="let letra of letras" class="btn btn-primary">
-          {{letra}}
-        </button>
-    </div>
-  </div>
-  <app-listado-realtime></app-listado-realtime>
+</div>
+<app-listado-realtime></app-listado-realtime>
