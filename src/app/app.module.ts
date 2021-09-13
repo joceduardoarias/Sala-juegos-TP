@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,7 @@ import { MatKeyboardModule } from "angular-onscreen-material-keyboard";
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { MayorMenorComponent } from './juegos/mayor-menor/mayor-menor.component';
 import { AhoracadoComponent } from './juegos/ahoracado/ahoracado.component';
+import { PreguntadosComponent } from './juegos/preguntados/preguntados.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AhoracadoComponent } from './juegos/ahoracado/ahoracado.component';
     MemotestComponent,
     EncuestaComponent,
     MayorMenorComponent,
-    AhoracadoComponent
+    AhoracadoComponent,
+    PreguntadosComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +63,10 @@ import { AhoracadoComponent } from './juegos/ahoracado/ahoracado.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
-    MatKeyboardModule        
+    MatKeyboardModule
   ],
   providers: [HttpService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
