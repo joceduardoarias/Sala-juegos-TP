@@ -17,7 +17,8 @@ export class ChatfirestoreComponent implements OnInit {
   nuevoMensaje: Mensajes = {mensaje:"",
                             timestamp:"",
                             nombre:""}; 
-  
+  logeado : boolean= false;
+
   constructor(private servicioFirestore:MensajesFirestoreService,
       private servicioRealTime:MensajesRealtimeService,
       private authService : AuthService,
@@ -48,9 +49,10 @@ export class ChatfirestoreComponent implements OnInit {
     this.authService.isAuth().then((res:any)=>{
       this.nuevoMensaje.nombre=res.email;
       console.log(this.nuevoMensaje.nombre=res.email);
-      
+      this.logeado = true;
     },error =>{
       console.log("no hay nadie logueado!!!");
+      this.logeado = false;
     });
     
   }

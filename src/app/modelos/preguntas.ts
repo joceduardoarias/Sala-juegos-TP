@@ -1,52 +1,66 @@
 export class Preguntas {
+    
+    listaPises: any= new Array();
     questions = [
-        {
-            question: "How many days makes a week ?",
-            optionA: "10 days",
-            optionB: "14 days",
-            optionC: "5 days",
-            optionD: "7 days",
+        {   
+            flag : "",
+            questionNumber:0,
+            question: "Esta es la bandera de: ?",
+            optionA: "Serbia",
+            optionB: "Switzerland",
+            optionC: "Bulgaria",
+            optionD: "Aland Island",
             correctOption: "optionD"
         },
     
-        {
-            question: "How many players are allowed on a soccer pitch ?",
-            optionA: "10 players",
-            optionB: "11 players",
-            optionC: "9 players",
-            optionD: "12 players",
+        {   
+            flag : "",
+            questionNumber:1,
+            question: "Esta es la bandera de: ?",
+            optionA: "Luxembourg",
+            optionB: "Austria",
+            optionC: "Hungary",
+            optionD: "Lithuania",
             correctOption: "optionB"
         },
     
-        {
-            question: "Who was the first President of USA ?",
-            optionA: "Donald Trump",
-            optionB: "Barack Obama",
-            optionC: "Abraham Lincoln",
-            optionD: "George Washington",
+        {   
+            flag : "",
+            questionNumber:2,
+            question: "Esta es la bandera de: ?",
+            optionA: "Spain",
+            optionB: "Romania",
+            optionC: "Netherlands",
+            optionD: "Belgium",
             correctOption: "optionD"
         },
     
-        {
-            question: "30 days has ______ ?",
-            optionA: "January",
-            optionB: "December",
-            optionC: "June",
-            optionD: "August",
+        {   
+            flag : "",
+            questionNumber:3,
+            question: "Esta es la bandera de: ?",
+            optionA: "Iceland",
+            optionB: "Estonia",
+            optionC: "Bulgaria",
+            optionD: "Slovenia",
             correctOption: "optionC"
         },
     
-        {
-            question: "How manay hours can be found in a day ?",
-            optionA: "30 hours",
-            optionB: "38 hours",
-            optionC: "48 hours",
-            optionD: "24 hours",
+        {   
+            flag : "",
+            questionNumber:4,
+            question: "Esta es la bandera de: ?",
+            optionA: "San Marino",
+            optionB: "Montenegro",
+            optionC: "Estonia",
+            optionD: "Croatia",
             correctOption: "optionD"
         },
     
-        {
-            question: "Which is the longest river in the world ?",
+        {   
+            flag : "",
+            questionNumber:5,
+            question: "Esta es la bandera de: ?",
             optionA: "River Nile",
             optionB: "Long River",
             optionC: "River Niger",
@@ -54,17 +68,21 @@ export class Preguntas {
             correctOption: "optionA"
         },
     
-        {
-            question: "_____ is the hottest Continent on Earth ?",
-            optionA: "Oceania",
-            optionB: "Antarctica",
-            optionC: "Africa",
-            optionD: "North America",
+        {   
+            flag : "",
+            questionNumber:6,
+            question: "Esta es la bandera de: ?",
+            optionA: "Andorra",
+            optionB: "Moldova",
+            optionC: "Malta",
+            optionD: "Czech Republic",
             correctOption: "optionC"
         },
     
-        {
-            question: "Which country is the largest in the world ?",
+        {   
+            flag : "",
+            questionNumber:7,
+            question: "Esta es la bandera de: ?",
             optionA: "Russia",
             optionB: "Canada",
             optionC: "Africa",
@@ -72,26 +90,32 @@ export class Preguntas {
             correctOption: "optionA"
         },
     
-        {
-            question: "Which of these numbers is an odd number ?",
-            optionA: "Ten",
-            optionB: "Twelve",
-            optionC: "Eight",
-            optionD: "Eleven",
+        {   
+            flag : "",
+            questionNumber:8,
+            question: "Esta es la bandera de: ?",
+            optionA: "Bosnia and Herzegovina",
+            optionB: "Moldova",
+            optionC: "Portugal",
+            optionD: "Estonia",
             correctOption: "optionD"
         },
     
-        {
-            question: `"You Can't see me" is a popular saying by`,
-            optionA: "Eminem",
-            optionB: "Bill Gates",
-            optionC: "Chris Brown",
-            optionD: "John Cena",
+        {   
+            flag : "",
+            questionNumber:9,
+            question: "Esta es la bandera de: ?",
+            optionA: "Greece",
+            optionB: "Belarus",
+            optionC: "Netherlands",
+            optionD: "Faroe Island",
             correctOption: "optionD"
         },
     
-        {
-            question: "Where is the world tallest building located ?",
+        {   
+            flag : "",
+            questionNumber:10,
+            question: "Esta es la bandera de: ?",
             optionA: "Africa",
             optionB: "California",
             optionC: "Dubai",
@@ -99,27 +123,33 @@ export class Preguntas {
             correctOption: "optionC"
         },
     
-        {
-            question: "The longest river in the United Kingdom is ?",
-            optionA: "River Severn",
-            optionB: "River Mersey",
-            optionC: "River Trent",
-            optionD: "River Tweed",
+        {   
+            flag : "",
+            questionNumber:11,
+            question: "Esta es la bandera de: ?",
+            optionA: "France",
+            optionB: "Germany",
+            optionC: "Romania",
+            optionD: "Czech Republic (Czechia)",
             correctOption: "optionA"
         },
     
     
-        {
-            question: "How many permanent teeth does a dog have ?",
-            optionA: "38",
-            optionB: "42",
-            optionC: "40",
-            optionD: "36",
+        {   
+            flag : "",
+            questionNumber:12,
+            question: "Esta es la bandera de: ?",
+            optionA: "Romania",
+            optionB: "French Guiana",
+            optionC: "Russia",
+            optionD: "North Macedonia",
             correctOption: "optionB"
         },
     
-        {
-            question: "Which national team won the football World cup in 2018 ?",
+        {   
+            flag : "",
+            questionNumber:13,
+            question: "Esta es la bandera de: ?",
             optionA: "England",
             optionB: "Brazil",
             optionC: "Germany",
@@ -127,8 +157,10 @@ export class Preguntas {
             correctOption: "optionD"
         },
     
-        {
-            question: "Which US state was Donald Trump Born ?",
+        {   
+            flag : "",
+            questionNumber:14,
+            question: "Esta es la bandera de: ?",
             optionA: "New York",
             optionB: "California",
             optionC: "New Jersey",
@@ -136,17 +168,21 @@ export class Preguntas {
             correctOption: "optionA"
         },
     
-        {
-            question: "How man states does Nigeria have ?",
-            optionA: "24",
-            optionB: "30",
-            optionC: "36",
-            optionD: "37",
+        {   
+            flag : "",
+            questionNumber:15,
+            question: "Esta es la bandera de: ?",
+            optionA: "Finland",
+            optionB: "Denmark",
+            optionC: "Greece",
+            optionD: "Portugal",
             correctOption: "optionC"
         },
     
-        {
-            question: "____ is the capital of Nigeria ?",
+        {   
+            flag : "",
+            questionNumber:16,
+            question: "Esta es la bandera de: ?",
             optionA: "Abuja",
             optionB: "Lagos",
             optionC: "Calabar",
@@ -154,17 +190,21 @@ export class Preguntas {
             correctOption: "optionA"
         },
     
-        {
-            question: "Los Angeles is also known as ?",
-            optionA: "Angels City",
-            optionB: "Shining city",
-            optionC: "City of Angels",
-            optionD: "Lost Angels",
+        {   
+            flag : "",
+            questionNumber:17,
+            question: "Esta es la bandera de: ?",
+            optionA: "Italy",
+            optionB: "Ukraine",
+            optionC: "Ireland",
+            optionD: "United Kingdom",
             correctOption: "optionC"
         },
     
-        {
-            question: "What is the capital of Germany ?",
+        {   
+            flag : "",
+            questionNumber:18,
+            question: "Esta es la bandera de: ?",
             optionA: "Georgia",
             optionB: "Missouri",
             optionC: "Oklahoma",
@@ -172,59 +212,109 @@ export class Preguntas {
             correctOption: "optionD"
         },
     
-        {
-            question: "How many sides does an hexagon have ?",
-            optionA: "Six",
-            optionB: "Sevene",
-            optionC: "Four",
-            optionD: "Five",
+        {   
+            flag : "",
+            questionNumber:19,
+            question: "Esta es la bandera de: ?",
+            optionA: "Italia",
+            optionB: "Liechtenstein",
+            optionC: "Malta",
+            optionD: "Monaco",
             correctOption: "optionA"
         },
     
-        {
-            question: "How many planets are currently in the solar system ?",
-            optionA: "Eleven",
-            optionB: "Seven",
-            optionC: "Nine",
-            optionD: "Eight",
+        {   
+            flag : "",
+            questionNumber:20,
+            question: "Esta es la bandera de: ?",
+            optionA: "Finland",
+            optionB: "Slovakia",
+            optionC: "Norway",
+            optionD: "Latvia",
             correctOption: "optionD"
         },
     
-        {
-            question: "Which Planet is the hottest ?",
-            optionA: "Jupitar",
-            optionB: "Mercury",
-            optionC: "Earth",
-            optionD: "Venus",
+        {   
+            flag : "",
+            questionNumber:21,
+            question: "Esta es la bandera de: ?",
+            optionA: "Slovenia",
+            optionB: "Lithuania",
+            optionC: "Finland",
+            optionD: "Albania",
             correctOption: "optionB"
         },
     
-        {
-            question: "where is the smallest bone in human body located?",
-            optionA: "Toes",
-            optionB: "Ears",
-            optionC: "Fingers",
-            optionD: "Nose",
+        {   
+            flag : "",
+            questionNumber:22,
+            question: "Esta es la bandera de: ?",
+            optionA: "Hungary",
+            optionB: "Luxembourg",
+            optionC: "Moldova",
+            optionD: "Poland",
             correctOption: "optionB"
         },
     
-        {
-            question: "How many hearts does an Octopus have ?",
-            optionA: "One",
-            optionB: "Two",
-            optionC: "Three",
-            optionD: "Four",
+        {   
+            flag : "",
+            questionNumber:23,
+            question: "Esta es la bandera de: ?",
+            optionA: "Switzerland",
+            optionB: "Serbia",
+            optionC: "Malta",
+            optionD: "Hungary",
             correctOption: "optionC"
         },
     
-        {
-            question: "How many teeth does an adult human have ?",
-            optionA: "28",
-            optionB: "30",
-            optionC: "32",
-            optionD: "36",
+        {   
+            flag : "",
+            questionNumber:24,
+            question: "Esta es la bandera de: ?",
+            optionA: "Liechtenstein",
+            optionB: "Iceland",
+            optionC: "Netherlands",
+            optionD: "Germany",
             correctOption: "optionC"
         }
     
     ]
+    constructor(){
+            
+    }
+
+    cargarPaises(paises:any){
+        
+        this.listaPises = paises;        
+        var next = 0;
+
+        for (var q of this.questions) {
+            for (let i = 0; i < this.listaPises.length; i++) {
+                    if (q.questionNumber == next && next < this.listaPises.length) {
+                        
+                        q.flag = this.listaPises[next].flag;
+
+                        switch (q.correctOption) {
+                            case "optionA":
+                                q.optionA = this.listaPises[next].name;
+                                break;
+                            case "optionB":
+                                q.optionB = this.listaPises[next].name;
+                                break;
+                            case "optionC":
+                                q.optionC = this.listaPises[next].name;
+                                break;
+                            case "optionD":
+                                q.optionD = this.listaPises[next].name;
+                                break;            
+                        
+                            default:
+                                break;
+                        }
+                        next++;
+                    }
+            }        
+    }
+}
+    
 }

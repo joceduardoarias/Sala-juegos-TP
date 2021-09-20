@@ -43,8 +43,7 @@ export class RegistroComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      this.router.navigate(['/ingreso/login']);
-      
+      this.router.navigate(['/home']);      
     }, error =>{
       console.log(error.message);
       Swal.fire({

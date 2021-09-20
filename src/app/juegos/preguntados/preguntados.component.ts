@@ -4,6 +4,7 @@ import { Puntajes } from 'src/app/modelos/puntajes';
 import Swal from 'sweetalert2';
 import { AuthService } from "../../services/auth.service";
 import { PreguntadosService } from "./../../services/preguntados.service";
+import { HttpService } from "../../services/http.service";
 
 @Component({
   selector: 'app-preguntados',
@@ -25,28 +26,41 @@ export class PreguntadosComponent implements OnInit, AfterViewInit {
   shuffledQuestions : any = [] //empty array to hold shuffled selected questions out of all available questions
   preguntas : Preguntas = new Preguntas();
   questions : any = [];
+  listaPises: any= new Array();
+  questionNumber = 1
+  playerScore = 0  
+  wrongAttempt = 0 
+  indexNumber = 0
+  start : boolean = false;
+  imgPath = "";
+  number = "";
 
-   questionNumber = 1
-   playerScore = 0  
-   wrongAttempt = 0 
-   indexNumber = 0
-   start : boolean = false;
-
-  constructor(private preguntadosService : PreguntadosService, private auth:AuthService) {
+  constructor(private preguntadosService : PreguntadosService, private auth:AuthService,private servicioHttp:HttpService) {
     this.puntajes = new Puntajes();
     this.inicializarPuntajes();
     this.puntajes.email = localStorage.getItem("usuario");
     console.log(localStorage.getItem("usuario"));
-    this.getAll();
-    this.questions = this.preguntas.questions;
+    this.getAll();    
+    this.servicioHttp.images.subscribe((paises:any)=>{
+      this.listaPises = paises;      
+    });
    }
 
   ngOnInit(): void {
+    // setTimeout(() => {
+    //   this.preguntas.cargarPaises(this.listaPises);
+    //   this.questions = this.preguntas.questions;
+    // }, 2000);
   }
 
   ngAfterViewInit() {
-    this.NextQuestion(0);
-    console.log("check");
+    setTimeout(() => {
+      this.preguntas.cargarPaises(this.listaPises);
+      this.questions = this.preguntas.questions;
+      this.NextQuestion(0);
+      console.log("check");
+      console.log(this.listaPises);
+    }, 2000);    
     
   }
 
@@ -64,11 +78,12 @@ export class PreguntadosComponent implements OnInit, AfterViewInit {
 // function for displaying next question in the array to dom
  NextQuestion(index:any) {
     this.handleQuestions();
-    console.log(this.shuffledQuestions[index]);
-    
+
     const currentQuestion = this.shuffledQuestions[index];
     document.getElementById("question-number")!.innerHTML = this.questionNumber.toString();
     document.getElementById("player-score")!.innerHTML = this.playerScore.toString();
+    this.imgPath = currentQuestion.flag;
+    this.number = currentQuestion.questionNumber;
     document.getElementById("display-question")!.innerHTML = currentQuestion.question;
     document.getElementById("option-one-label")!.innerHTML = currentQuestion.optionA;
     document.getElementById("option-two-label")!.innerHTML = currentQuestion.optionB;
