@@ -1,280 +1,280 @@
 export class Preguntas {
     
-    listaPises: any= new Array();
+    data: any= new Array();
     questions = [
         {   
-            flag : "",
-            questionNumber:0,
-            question: "Esta es la bandera de: ?",
-            optionA: "Serbia",
-            optionB: "Switzerland",
-            optionC: "Bulgaria",
-            optionD: "Aland Island",
-            correctOption: "optionD"
-        },
-    
-        {   
-            flag : "",
+            img : "",
             questionNumber:1,
-            question: "Esta es la bandera de: ?",
-            optionA: "Luxembourg",
-            optionB: "Austria",
-            optionC: "Hungary",
-            optionD: "Lithuania",
-            correctOption: "optionB"
+            question: "Este personajes es: ?",
+            optionA: "Gustavo Fring",
+            optionB: "Domingo Molina",
+            optionC: "Todd Alquist",
+            optionD: "Jesse Pinkman",
+            correctOption: "optionD"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:2,
-            question: "Esta es la bandera de: ?",
-            optionA: "Spain",
-            optionB: "Romania",
-            optionC: "Netherlands",
-            optionD: "Belgium",
-            correctOption: "optionD"
+            question: "Este personajes es: ?",
+            optionA: "Carmen Molina",
+            optionB: "Skyler White",
+            optionC: "Brock Cantillo",
+            optionD: "Lydia Rodarte-Quayle",
+            correctOption: "optionB"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:3,
-            question: "Esta es la bandera de: ?",
-            optionA: "Iceland",
-            optionB: "Estonia",
-            optionC: "Bulgaria",
-            optionD: "Slovenia",
-            correctOption: "optionC"
+            question: "Este personajes es: ?",
+            optionA: "Andrea Cantillo",
+            optionB: "Jane Margolis",
+            optionC: "Carmen Molina",
+            optionD: "Skyler White",
+            correctOption: "optionD"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:4,
-            question: "Esta es la bandera de: ?",
-            optionA: "San Marino",
-            optionB: "Montenegro",
-            optionC: "Estonia",
-            optionD: "Croatia",
-            correctOption: "optionD"
+            question: "Este personajes es: ?",
+            optionA: "Walter White",
+            optionB: "Jesse Pinkman",
+            optionC: "Henry Schrader",
+            optionD: "Todd Alquist",
+            correctOption: "optionC"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:5,
-            question: "Esta es la bandera de: ?",
-            optionA: "River Nile",
-            optionB: "Long River",
-            optionC: "River Niger",
-            optionD: "Lake Chad",
-            correctOption: "optionA"
+            question: "Este personajes es: ?",
+            optionA: "Skyler White",
+            optionB: "Jane Margolis",
+            optionC: "Brock Cantillo",
+            optionD: "Marie Schrader",
+            correctOption: "optionD"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:6,
-            question: "Esta es la bandera de: ?",
-            optionA: "Andorra",
-            optionB: "Moldova",
-            optionC: "Malta",
-            optionD: "Czech Republic",
-            correctOption: "optionC"
+            question: "Este personajes es: ?",
+            optionA: "Mike Ehrmantraut",
+            optionB: "Skyler White",
+            optionC: "Anna Gunn",
+            optionD: "Dean Norris",
+            correctOption: "optionA"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:7,
-            question: "Esta es la bandera de: ?",
-            optionA: "Russia",
-            optionB: "Canada",
-            optionC: "Africa",
-            optionD: "Egypt",
-            correctOption: "optionA"
+            question: "¿Quien es este personaje?",
+            optionA: "Anna Gunn",
+            optionB: "Skyler White",
+            optionC: "Marie Schrader",
+            optionD: "Dean Norris",
+            correctOption: "optionC"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:8,
-            question: "Esta es la bandera de: ?",
-            optionA: "Bosnia and Herzegovina",
-            optionB: "Moldova",
-            optionC: "Portugal",
-            optionD: "Estonia",
-            correctOption: "optionD"
+            question: "Este personajes es: ?",
+            optionA: "Gustavo Fring",
+            optionB: "Henry Schrader",
+            optionC: "Mike Ehrmantraut",
+            optionD: "Jesse White",
+            correctOption: "optionA"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:9,
-            question: "Esta es la bandera de: ?",
-            optionA: "Greece",
-            optionB: "Belarus",
-            optionC: "Netherlands",
-            optionD: "Faroe Island",
+            question: "Este personajes es: ?",
+            optionA: "Mike Ehrmantraut",
+            optionB: "Brandon Mayhew",
+            optionC: "Steve Gomez",
+            optionD: "Hector Salamanca",
             correctOption: "optionD"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:10,
-            question: "Esta es la bandera de: ?",
-            optionA: "Africa",
-            optionB: "California",
-            optionC: "Dubai",
-            optionD: "Italy",
-            correctOption: "optionC"
+            question: "Este personajes es: ?",
+            optionA: "Mike Ehrmantraut",
+            optionB: "Brandon Mayhew",
+            optionC: "Hector Salamanca",
+            optionD: "Domingo Molina",
+            correctOption: "optionD"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:11,
-            question: "Esta es la bandera de: ?",
-            optionA: "France",
-            optionB: "Germany",
-            optionC: "Romania",
-            optionD: "Czech Republic (Czechia)",
-            correctOption: "optionA"
+            question: "Este personajes es: ?",
+            optionA: "Steven Gomez",
+            optionB: "Domingo Molina",
+            optionC: "Tuco Salamanca",
+            optionD: "Gustabo Fring",
+            correctOption: "optionC"
         },
     
-    
         {   
-            flag : "",
+            img : "",
             questionNumber:12,
-            question: "Esta es la bandera de: ?",
-            optionA: "Romania",
-            optionB: "French Guiana",
-            optionC: "Russia",
-            optionD: "North Macedonia",
-            correctOption: "optionB"
+            question: "¿Quien es este personaje?",
+            optionA: "Marco & Leonel Salamanca",
+            optionB: "Lydia Rodarte-Quayle",
+            optionC: "Todd Alquist",
+            optionD: "Jane Margolis",
+            correctOption: "optionA"
         },
     
+    
         {   
-            flag : "",
+            img : "",
             questionNumber:13,
-            question: "Esta es la bandera de: ?",
-            optionA: "England",
-            optionB: "Brazil",
-            optionC: "Germany",
-            optionD: "France",
-            correctOption: "optionD"
+            question: "Este personajes es: ?",
+            optionA: "Jane Margolis",
+            optionB: "Lydia Rodarte-Quayle",
+            optionC: "Carmen Molina",
+            optionD: "Andrea Cantillo",
+            correctOption: "optionB"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:14,
-            question: "Esta es la bandera de: ?",
-            optionA: "New York",
-            optionB: "California",
-            optionC: "New Jersey",
-            optionD: "Los Angeles",
-            correctOption: "optionA"
+            question: "Este personajes es: ?",
+            optionA: "Gale Beotticher",
+            optionB: "Sauld Godman",
+            optionC: "Mike Ehrmantraut",
+            optionD: "Todd Alquist",
+            correctOption: "optionD"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:15,
-            question: "Esta es la bandera de: ?",
-            optionA: "Finland",
-            optionB: "Denmark",
-            optionC: "Greece",
-            optionD: "Portugal",
-            correctOption: "optionC"
+            question: "Este personajes es: ?",
+            optionA: "Jane Margolis",
+            optionB: "Carmen Molina",
+            optionC: "Andrea Cantillo",
+            optionD: "Skyler White",
+            correctOption: "optionA"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:16,
-            question: "Esta es la bandera de: ?",
-            optionA: "Abuja",
-            optionB: "Lagos",
-            optionC: "Calabar",
-            optionD: "Kano",
-            correctOption: "optionA"
+            question: "Este personajes es: ?",
+            optionA: "Theodore Beneke",
+            optionB: "Barndon MayHew",
+            optionC: "Skinny Pete",
+            optionD: "Todd Alquist",
+            correctOption: "optionC"
         },
     
         {   
-            flag : "",
+            img : "",
             questionNumber:17,
-            question: "Esta es la bandera de: ?",
-            optionA: "Italy",
-            optionB: "Ukraine",
-            optionC: "Ireland",
-            optionD: "United Kingdom",
-            correctOption: "optionC"
-        },
-    
-        {   
-            flag : "",
-            questionNumber:18,
-            question: "Esta es la bandera de: ?",
-            optionA: "Georgia",
-            optionB: "Missouri",
-            optionC: "Oklahoma",
-            optionD: "Berlin",
-            correctOption: "optionD"
-        },
-    
-        {   
-            flag : "",
-            questionNumber:19,
-            question: "Esta es la bandera de: ?",
-            optionA: "Italia",
-            optionB: "Liechtenstein",
-            optionC: "Malta",
-            optionD: "Monaco",
+            question: "Este personajes es: ?",
+            optionA: "Brandon Mayhew",
+            optionB: "Skenny Pete",
+            optionC: "Brandon Mayhew",
+            optionD: "Huell Babineaux",
             correctOption: "optionA"
         },
     
         {   
-            flag : "",
-            questionNumber:20,
-            question: "Esta es la bandera de: ?",
-            optionA: "Finland",
-            optionB: "Slovakia",
-            optionC: "Norway",
-            optionD: "Latvia",
-            correctOption: "optionD"
-        },
-    
-        {   
-            flag : "",
-            questionNumber:21,
-            question: "Esta es la bandera de: ?",
-            optionA: "Slovenia",
-            optionB: "Lithuania",
-            optionC: "Finland",
-            optionD: "Albania",
-            correctOption: "optionB"
-        },
-    
-        {   
-            flag : "",
-            questionNumber:22,
-            question: "Esta es la bandera de: ?",
-            optionA: "Hungary",
-            optionB: "Luxembourg",
-            optionC: "Moldova",
-            optionD: "Poland",
-            correctOption: "optionB"
-        },
-    
-        {   
-            flag : "",
-            questionNumber:23,
-            question: "Esta es la bandera de: ?",
-            optionA: "Switzerland",
-            optionB: "Serbia",
-            optionC: "Malta",
-            optionD: "Hungary",
+            img : "",
+            questionNumber:18,
+            question: "Este personajes es: ?",
+            optionA: "Saul Godman",
+            optionB: "Skenny Pete",
+            optionC: "Brandon Mayhew",
+            optionD: "Huell Babineaux",
             correctOption: "optionC"
         },
     
         {   
-            flag : "",
+            img : "",
+            questionNumber:19,
+            question: "Este personajes es: ?",
+            optionA: "Saul Godman",
+            optionB: "Skenny Pete",
+            optionC: "Brandon Mayhew",
+            optionD: "Steven Gomez",
+            correctOption: "optionD"
+        },
+    
+        {   
+            img : "",
+            questionNumber:20,
+            question: "Este personajes es: ?",
+            optionA: "Theodore Beneke",
+            optionB: "Barndon MayHew",
+            optionC: "Todd Alquist",
+            optionD: "Walter White",
+            correctOption: "optionA"
+        },
+    
+        {   
+            img : "",
+            questionNumber:21,
+            question: "Este personajes es: ?",
+            optionA: "Tuco Salamanca",
+            optionB: "Henry Schrader",
+            optionC: "Theodore Beneke",
+            optionD: "Gale Boetticher",
+            correctOption: "optionD"
+        },
+    
+        {   
+            img : "",
+            questionNumber:22,
+            question: "Este personajes es: ?",
+            optionA: "Lydia Rodarte-Quayle",
+            optionB: "Andrea Castilllo",
+            optionC: "Carmen Molina",
+            optionD: "Marie Scharder",
+            correctOption: "optionB"
+        },
+    
+        {   
+            img : "",
+            questionNumber:23,
+            question: "Este personajes es: ?",
+            optionA: "Steven Gomez",
+            optionB: "Brock Cantillo",
+            optionC: "Domingo Molina",
+            optionD: "Tuco Salamanca",
+            correctOption: "optionB"
+        },
+    
+        {   
+            img : "",
             questionNumber:24,
-            question: "Esta es la bandera de: ?",
-            optionA: "Liechtenstein",
-            optionB: "Iceland",
-            optionC: "Netherlands",
-            optionD: "Germany",
+            question: "Este personaje es: ?",
+            optionA: "Lydia Rodarte-Quayle",
+            optionB: "Skler White",
+            optionC: "Carmen Molina",
+            optionD: "Andre Cantillo",
+            correctOption: "optionC"
+        },
+    
+        {   
+            img : "",
+            questionNumber:25,
+            question: "Este personajes es: ?",
+            optionA: "Lydia Rodarte-Quayle",
+            optionB: "Skler White",
+            optionC: "Carmen Molina",
+            optionD: "Andrea Castillo",
             correctOption: "optionC"
         }
     
@@ -283,29 +283,29 @@ export class Preguntas {
             
     }
 
-    cargarPaises(paises:any){
+    cargarData(data:any){
         
-        this.listaPises = paises;        
-        var next = 0;
+        this.data = data;        
+        var next = 1;
 
         for (var q of this.questions) {
-            for (let i = 0; i < this.listaPises.length; i++) {
-                    if (q.questionNumber == next && next < this.listaPises.length) {
+            for (let i = 0; i < this.data.length; i++) {
+                    if (q.questionNumber == next && next < this.data.length) {
                         
-                        q.flag = this.listaPises[next].flag;
+                        q.img = this.data[next].img;
 
                         switch (q.correctOption) {
                             case "optionA":
-                                q.optionA = this.listaPises[next].name;
+                                q.optionA = this.data[next].name;
                                 break;
                             case "optionB":
-                                q.optionB = this.listaPises[next].name;
+                                q.optionB = this.data[next].name;
                                 break;
                             case "optionC":
-                                q.optionC = this.listaPises[next].name;
+                                q.optionC = this.data[next].name;
                                 break;
                             case "optionD":
-                                q.optionD = this.listaPises[next].name;
+                                q.optionD = this.data[next].name;
                                 break;            
                         
                             default:

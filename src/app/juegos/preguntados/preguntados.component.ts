@@ -26,7 +26,7 @@ export class PreguntadosComponent implements OnInit, AfterViewInit {
   shuffledQuestions : any = [] //empty array to hold shuffled selected questions out of all available questions
   preguntas : Preguntas = new Preguntas();
   questions : any = [];
-  listaPises: any= new Array();
+  data: any= new Array();
   questionNumber = 1
   playerScore = 0  
   wrongAttempt = 0 
@@ -41,8 +41,10 @@ export class PreguntadosComponent implements OnInit, AfterViewInit {
     this.puntajes.email = localStorage.getItem("usuario");
     console.log(localStorage.getItem("usuario"));
     this.getAll();    
-    this.servicioHttp.images.subscribe((paises:any)=>{
-      this.listaPises = paises;      
+    this.servicioHttp.images.subscribe((data:any)=>{
+      this.data = data;    
+      console.log(data);
+        
     });
    }
 
@@ -55,11 +57,11 @@ export class PreguntadosComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.preguntas.cargarPaises(this.listaPises);
+      this.preguntas.cargarData(this.data);
       this.questions = this.preguntas.questions;
       this.NextQuestion(0);
       console.log("check");
-      console.log(this.listaPises);
+      // console.log(this.data);
     }, 2000);    
     
   }
@@ -82,7 +84,9 @@ export class PreguntadosComponent implements OnInit, AfterViewInit {
     const currentQuestion = this.shuffledQuestions[index];
     document.getElementById("question-number")!.innerHTML = this.questionNumber.toString();
     document.getElementById("player-score")!.innerHTML = this.playerScore.toString();
-    this.imgPath = currentQuestion.flag;
+    this.imgPath = currentQuestion.img;
+    // console.log(currentQuestion.img);
+    
     this.number = currentQuestion.questionNumber;
     document.getElementById("display-question")!.innerHTML = currentQuestion.question;
     document.getElementById("option-one-label")!.innerHTML = currentQuestion.optionA;
