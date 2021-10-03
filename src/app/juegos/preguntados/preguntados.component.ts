@@ -13,6 +13,7 @@ import { HttpService } from "../../services/http.service";
 })
 export class PreguntadosComponent implements OnInit, AfterViewInit {
   
+  logueado:boolean = false;
     //Puntajes
   contadorVitorias:number = 0;
   contadorDerrotas:number = 0;
@@ -53,6 +54,9 @@ export class PreguntadosComponent implements OnInit, AfterViewInit {
     //   this.preguntas.cargarPaises(this.listaPises);
     //   this.questions = this.preguntas.questions;
     // }, 2000);
+    if (localStorage.getItem("user") != null) {
+      this.logueado = true;
+    }
   }
 
   ngAfterViewInit() {

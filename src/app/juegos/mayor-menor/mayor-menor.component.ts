@@ -64,7 +64,7 @@ export class MayorMenorComponent implements OnInit {
                 numero:14
               }
               ];
-
+  logueado:boolean = false;            
   paloArriba :any;
   numero : any;
   paloAbajo : any;
@@ -94,6 +94,9 @@ export class MayorMenorComponent implements OnInit {
     this.numero = document.getElementById("numero");
     this.paloAbajo = document.getElementById("simboloAbajo");
     this.generacionCarta("inicio");
+    if (localStorage.getItem("user") != null) {
+      this.logueado = true;
+    }
   }
 
     eleccionCarta(arr1:any, arr2:any){

@@ -11,6 +11,7 @@ import { AnagramaService } from "../../services/anagrama.service";
 })
 export class AnagramaComponent implements OnInit {
   
+  logueado:boolean = false;
   palabraRandom: number = 0;
   palabraUser: string = "";
   palabraDesordenada: string = "";
@@ -66,7 +67,9 @@ export class AnagramaComponent implements OnInit {
    }
 
   ngOnInit(): void {
-   
+    if (localStorage.getItem("user") != null) {
+      this.logueado = true;
+    }
   }
   
 

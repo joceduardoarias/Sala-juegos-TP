@@ -17,6 +17,7 @@ export class AuthService {
   * Este método es el encargado de autenticar los usuarios de la app
   */
  public async singIn (email :string, password:string) {
+   localStorage.setItem("user",email);
    return this.afAuth.signInWithEmailAndPassword(email,password);
  }              
  /**

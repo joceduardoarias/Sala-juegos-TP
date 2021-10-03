@@ -11,6 +11,7 @@ import { AhorcadoService } from "./../../services/ahorcado.service";
 })
 export class AhoracadoComponent implements OnInit {
 
+  logueado:boolean = false;
   //Puntajes
   contadorVitorias:number = 0;
   contadorDerrotas:number = 0;
@@ -42,6 +43,9 @@ export class AhoracadoComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    if (localStorage.getItem("user") != null) {
+      this.logueado = true;
+    }
   }
 
   inicializarPuntajes(){

@@ -87,4 +87,4 @@
         <button type="button" class="btn btn-outline-secondary" (click)="mostrar()">Listar Resultados</button>        
       </div>
 </div>
-<app-listado-realtime></app-listado-realtime>
+<app-listado-realtime *ngIf="logueado"></app-listado-realtime>
