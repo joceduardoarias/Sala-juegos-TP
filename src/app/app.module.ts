@@ -30,6 +30,7 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { MayorMenorComponent } from './juegos/mayor-menor/mayor-menor.component';
 import { AhoracadoComponent } from './juegos/ahoracado/ahoracado.component';
 import { PreguntadosComponent } from './juegos/preguntados/preguntados.component';
+import { TetrisComponent } from './juegos/tetris/tetris.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PreguntadosComponent } from './juegos/preguntados/preguntados.component
     EncuestaComponent,
     MayorMenorComponent,
     AhoracadoComponent,
-    PreguntadosComponent
+    PreguntadosComponent,
+    TetrisComponent
   ],
   imports: [
     BrowserModule,

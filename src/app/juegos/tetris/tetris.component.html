@@ -1,0 +1,17 @@
+<app-nav-bar></app-nav-bar>
+<div class="grid">
+    <canvas #board class="game-board"></canvas>
+    <div class="right-column">
+        <div>
+            <h1>TETRIS</h1>
+            <p>Score: {{ points }}</p>
+            <p>Lines: {{ lines }}</p>
+            <p>Level: {{ level }}</p>
+            <canvas #next class="next"></canvas>
+        </div>
+        <button (click)="play()" class="play-button">Play</button>
+        <button (click)="mostrar()" class="play-button" style="background-color: darkgoldenrod;">Listar resultados</button>
+        <button (click)="guardar()" class="play-button" style="background-color: dimgrey;">Guarar partida</button>
+    </div>
+</div>
+<app-listado-realtime *ngIf="logueado"></app-listado-realtime>

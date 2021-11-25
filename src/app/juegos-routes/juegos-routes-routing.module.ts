@@ -8,6 +8,7 @@ import { PiedraPapleOTijeraComponent } from '../juegos/piedra-paple-o-tijera/pie
 import { TatetiComponent } from '../juegos/tateti/tateti.component';
 import { AhoracadoComponent } from '../juegos/ahoracado/ahoracado.component';
 import { PreguntadosComponent } from '../juegos/preguntados/preguntados.component';
+import { TetrisComponent } from '../juegos/tetris/tetris.component';
 
 const routes: Routes = [
   // { path: '', component: JuegosRoutesComponent }
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: "mayorMenor",component: MayorMenorComponent},
   {path:"ahorcado",component:AhoracadoComponent},
   {path: "preguntados",component:PreguntadosComponent},
+  {path: "tetris", component:TetrisComponent},
   {path:'',redirectTo:'sala',pathMatch:'full'}
 ];
 
